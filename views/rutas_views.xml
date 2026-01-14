@@ -1,0 +1,38 @@
+<odoo>
+  <record id="logitrans_rutas_form_view" model="ir.ui.view">
+    <field name="name">logitrans.rutas.form</field>
+    <field name="model">logitrans.rutas</field>
+    <field name="arch" type="xml">
+      <form string="Rutas">
+        <!-- <sheet layout="auto"> -->
+        <group>
+          <group>
+            <field name="tipo_ruta" />
+            <field name="distancia_estimada" />
+          </group>
+        </group>
+        <!-- </sheet> -->
+      </form>
+    </field>
+  </record>
+
+  <record id="logitrans_rutas_tree_view" model="ir.ui.view">
+    <field name="name">logitrans.rutas.tree</field>
+    <field name="model">logitrans.rutas</field>
+    <field name="arch" type="xml">
+      <tree string="Rutas">
+        <field name="tipo_ruta" />
+        <field name="distancia_estimada" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="rutas_list_action" model="ir.actions.act_window">
+    <field name="name">Rutas</field>
+    <field name="res_model">logitrans.rutas</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Create the first ruta</p>
+    </field>
+  </record>
+</odoo>

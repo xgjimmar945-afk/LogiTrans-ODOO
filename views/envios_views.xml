@@ -1,0 +1,43 @@
+<odoo>
+  <record id="logitrans_envios_form_view" model="ir.ui.view">
+    <field name="name">logitrans.envios.form</field>
+    <field name="model">logitrans.envios</field>
+    <field name="arch" type="xml">
+      <form string="Envios">
+        <!-- <sheet layout="auto"> -->
+        <group>
+          <group>
+            <field name="nombre" />
+            <field name="fecha_creacion" />
+          </group>
+          <group>
+            <field name="peso_kg" />
+          </group>
+        </group>
+        <!-- </sheet> -->
+      </form>
+    </field>
+  </record>
+
+  <record id="logitrans_envios_tree_view" model="ir.ui.view">
+    <field name="name">logitrans.envios.tree</field>
+    <field name="model">logitrans.envios</field>
+    <field name="arch" type="xml">
+      <tree string="Envios">
+        <field name="nombre" />
+        <field name="fecha_creacion" />
+
+        <field name="peso_kg" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="envios_list_action" model="ir.actions.act_window">
+    <field name="name">Envios</field>
+    <field name="res_model">logitrans.envios</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Create the first envio</p>
+    </field>
+  </record>
+</odoo>

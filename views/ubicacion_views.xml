@@ -1,0 +1,50 @@
+<odoo>
+  <record id="logitrans_ubicacion_form_view" model="ir.ui.view">
+    <field name="name">logitrans.ubicacion.form</field>
+    <field name="model">logitrans.ubicacion</field>
+    <field name="arch" type="xml">
+      <form string="Ubicacion">
+        <!-- <sheet layout="auto"> -->
+        <group>
+          <group>
+            <field name="provincia" />
+            <field name="ciudad" />
+          </group>
+          <group>
+            <field name="direccion" />
+            <field name="nombre" />
+          </group>
+          <group>
+            <field name="longitud" />
+            <field name="latitud" />
+          </group>
+        </group>
+        <!-- </sheet> -->
+      </form>
+    </field>
+  </record>
+
+  <record id="logitrans_ubicacion_tree_view" model="ir.ui.view">
+    <field name="name">logitrans.ubicacion.tree</field>
+    <field name="model">logitrans.ubicacion</field>
+    <field name="arch" type="xml">
+      <tree string="Ubicacion">
+        <field name="provincia" />
+        <field name="ciudad" />
+        <field name="direccion" />
+        <field name="nombre" />
+        <field name="longitud" />
+        <field name="latitud" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="ubicacion_list_action" model="ir.actions.act_window">
+    <field name="name">Ubicacion</field>
+    <field name="res_model">logitrans.ubicacion</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Create the first ubicacion</p>
+    </field>
+  </record>
+</odoo>
