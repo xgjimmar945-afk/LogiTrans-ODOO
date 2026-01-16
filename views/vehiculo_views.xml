@@ -9,6 +9,8 @@
                 <field name="matricula"/>
                 <field name="marca"/>
                 <field name="modelo"/>
+                <field name="anio_fabricacion"/>
+                <field name="fecha_matriculacion"/>
                 <field name="capacidad_kg"/>
                 <field name="activo"/>
             </tree>
@@ -27,13 +29,31 @@
                             <field name="matricula"/>
                             <field name="marca"/>
                             <field name="modelo"/>
+
+                            <field name="anio_fabricacion"/>
+                            <field name="fecha_matriculacion"/>
+                            <field name="antiguedad" readonly="1"/>
+
                         </group>
                         <group>
                             <field name="capacidad_kg"/>
                             <field name="activo"/>
+                            <field name="tipo_carga_ids" widget="many2many_tags" />
                         </group>
                         
                     </group>
+                    <notebook>
+                        <page string="Mantenimientos">
+                            <field name="mantenimiento_ids">
+                                <tree editable="bottom">
+                                    <field name="fecha"/>
+                                    <field name="tipo"/>
+                                    <field name="coste"/>
+                                    <field name="descripcion"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

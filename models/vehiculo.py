@@ -4,22 +4,39 @@ import re  #esto es una libreria de python para expresiones regulares para las v
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
+MATRICULA_RE = re.compile(r'^\d{4}[A-Z]{3}$')  #sera global asi no la llama cada vez en el bucle
 
 class LogitransVehiculo(models.Model):
     _name = 'logitrans.vehiculo'
     _description = 'Vehículo'
 
-    name = fields.Char(string='Nombre', required=False)
+    name = fields.Char(string='Nombre')
+
+    anio_fabricacion = fields.Selection(
+    [(str(y), str(y)) for y in range(fields.Date.today().year, 1950, -1)],
+    string="Año de fabricación",
+    help="Año del modelo del vehículo. Dato técnico para identificación de piezas."
+)
+
+    fecha_matriculacion = fields.Date(
+        string="Fecha de matriculación",
+        help="Fecha de primera matriculación. Base legal para ITV y revisiones."
+    )
+
+    antiguedad = fields.Integer(
+        string="Antigüedad (años)",
+        compute="_compute_antiguedad",
+        store=False
+    )
 
     matricula = fields.Char(
-        string = 'Matricula',
+        string='Matrícula',
         required=True,
         index=True,
         help="Formato 1234ABC o 1234 ABC"
     )
     marca = fields.Char(string='Marca')
     modelo = fields.Char(string='Modelo')
-
     capacidad_kg = fields.Float(string='Capacidad (kg)', default=0.0)
     activo = fields.Boolean(string='Activo', default=True)
 
@@ -28,35 +45,71 @@ class LogitransVehiculo(models.Model):
         'vehiculo_id',
         string='Mantenimientos'
     )
-    _sql_constraints = [
-        ('matricula_unique','unique(matricula)','La matrícula ya existe.')
 
+    tipo_carga_ids = fields.Many2many(
+        'logitrans.tipo_carga',
+        string='Tipos de carga autorizados'
+    )
+
+    _sql_constraints = [
+        ('matricula_unique', 'unique(matricula)', 'La matrícula ya existe.')
     ]
 
+    
+    def _normalize_matricula(self, m):
+        # deja "1234 ABC" como "1234ABC" y lo pone en mayúsculas
+        return re.sub(r'\s+', '', (m or '').strip()).upper()
+
+    #esto es para que si el usuario ingresa 1234ABC o 1234 abc lo reescribe y lo unifica todo en el mismo formato
+    #asi puede comparar realmente que es la misma matrícula. Recrea el valor y en write lo reescribe.
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if 'matricula' in vals:
+                vals['matricula'] = self._normalize_matricula(vals['matricula'])
+        return super().create(vals_list)
+
+    def write(self, vals):
+        if 'matricula' in vals:
+            vals['matricula'] = self._normalize_matricula(vals['matricula'])
+        return super().write(vals)
+    
+    
+    # aqui se hace la validacion del formato:
     @api.constrains('matricula')
     def _check_matricula_es(self):
-        """
-        Validación sencilla de matrícula española
-        -4digitos
-        -3 letras
-        -permite espacio opcional: 1234 ABC o 1234ABC
-        """
-        patron= re.compile(r'^\d{4}\s?[A-Z]{3}$')
-
-        for rec in self:
-            if not rec.matricula:
+        for record in self:
+            if not record.matricula:
                 continue
-            value = rec.matricula.strip().upper()
-            #para guardar la matricula toda en upper case.
-            rec.matricula = value
 
-            if not patron.match(value):
-                raise ValidationError(
-                    "Matricula inválida usa el formato: 1234ABC o 1234 ABC"
-                )
-    
+            value = self._normalize_matricula(record.matricula)
+
+            if not MATRICULA_RE.match(value):
+                raise ValidationError("Matrícula inválida: usa 1234ABC o 1234 ABC")
+            
+    #aqui calcula la antiguedad del coche para las revisiones tecnicas(ITV)
+    def _compute_antiguedad(self):
+        hoy = fields.Date.today()
+        for record in self:
+            if record.fecha_matriculacion:
+                record.antiguedad = hoy.year - record.fecha_matriculacion.year
+            else:
+                record.antiguedad = 0
+
     @api.constrains('capacidad_kg')
     def _check_capacidad(self):
-        for rec in self:
-            if rec.capacidad_kg is not None and rec.capacidad_kg < 0:
-                raise ValidationError("La capacidad en (kg) no puede ser negativa.")   
+        for record in self:
+            if record.capacidad_kg is not None and record.capacidad_kg < 0:
+                raise ValidationError("La capacidad (kg) no puede ser negativa.")
+    
+    #esto es para saber las piezas de recambios a que modelo y año corresponden
+    @api.constrains("anio_fabricacion", "fecha_matriculacion")
+    def _check_fechas_vehiculo(self):
+        for record in self:
+            if record.anio_fabricacion and record.fecha_matriculacion:
+                anio = int(record.anio_fabricacion)  # <-- como entra de un select como string hay que pasarlo a int para validar
+
+                if anio > record.fecha_matriculacion.year:
+                    raise ValidationError(
+                        "El año de fabricación no puede ser posterior a la fecha de matriculación."
+                    ) 

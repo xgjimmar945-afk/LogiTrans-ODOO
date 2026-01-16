@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- TREE: listado de mantenimientos -->
+    <record id="view_logitrans_mantenimiento_tree" model="ir.ui.view">
+        <field name="name">logitrans.mantenimiento.tree</field>
+        <field name="model">logitrans.mantenimiento</field>
+        <field name="arch" type="xml">
+            <tree string="Mantenimientos">
+                <field name="vehiculo_id"/>
+                <field name="fecha"/>
+                <field name="tipo"/>
+                <field name="coste"/>
+                <field name="realizado"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM: ficha de mantenimiento -->
+    <record id="view_logitrans_mantenimiento_form" model="ir.ui.view">
+        <field name="name">logitrans.mantenimiento.form</field>
+        <field name="model">logitrans.mantenimiento</field>
+        <field name="arch" type="xml">
+            <form string="Mantenimiento">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="vehiculo_id" required="1"/>
+                            <field name="fecha" required="1"/>
+                            <field name="tipo" required="1"/>
+                        </group>
+                        <group>
+                            <field name="coste"/>
+                            <field name="realizado"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="descripcion"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ACTION: abre tree+form -->
+    <record id="action_logitrans_mantenimiento" model="ir.actions.act_window">
+        <field name="name">Mantenimientos</field>
+        <field name="res_model">logitrans.mantenimiento</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- MENÚ: dentro de LogiTrans -->
+    <menuitem id="menu_logitrans_mantenimiento"
+              name="Mantenimientos"
+              parent="menu_logitrans_root"
+              action="action_logitrans_mantenimiento"/>
+</odoo>
