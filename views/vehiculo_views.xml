@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- TREE (lista) -->
+    <record id="view_logitrans_vehiculo_tree" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo.tree</field>
+        <field name="model">logitrans.vehiculo</field>
+        <field name="arch" type="xml">
+            <tree string="Vehículos">
+                <field name="matricula"/>
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="capacidad_kg"/>
+                <field name="activo"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM (ficha) -->
+    <record id="view_logitrans_vehiculo_form" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo.form</field>
+        <field name="model">logitrans.vehiculo</field>
+        <field name="arch" type="xml">
+            <form string="Vehículo">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="matricula"/>
+                            <field name="marca"/>
+                            <field name="modelo"/>
+                        </group>
+                        <group>
+                            <field name="capacidad_kg"/>
+                            <field name="activo"/>
+                        </group>
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_logitrans_vehiculo" model="ir.actions.act_window">
+        <field name="name">Vehículos</field>
+        <field name="res_model">logitrans.vehiculo</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- MENÚ -->
+    <menuitem id="menu_logitrans_root" name="LogiTrans"/>
+    <menuitem id="menu_logitrans_vehiculo" name="Vehículos" parent="menu_logitrans_root" action="action_logitrans_vehiculo"/>
+</odoo>

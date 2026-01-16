@@ -11,6 +11,7 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
+        'views/vehiculo_views.xml',
     ],
     'installable': True,
     'application': True,
