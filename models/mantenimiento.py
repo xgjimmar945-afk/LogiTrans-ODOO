@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class LogitransMantenimiento(models.Model):
     _name = 'logitrans.mantenimiento'
     _description = 'Mantenimiento de vehículo'
+    _rec_name = 'fecha'
 
     vehiculo_id = fields.Many2one(
         'logitrans.vehiculo',
@@ -14,12 +16,20 @@ class LogitransMantenimiento(models.Model):
 
     fecha = fields.Date(
         string='Fecha de mantenimiento',
-        required=True
+        required=True,
+        default=fields.Date.today
     )
 
-    tipo = fields.Char(
-        string='Tipo de mantenimiento',
-        required=True
+    tipo = fields.Selection(
+    selection=[
+        ('itv', 'ITV'),
+        ('preventivo', 'Preventivo'),
+        ('reparacion', 'Reparación'),
+        ('estetico', 'Estético'),
+    ],
+    string='Tipo de mantenimiento',
+    required=True,
+    default='preventivo'
     )
 
     coste = fields.Float(
@@ -35,3 +45,9 @@ class LogitransMantenimiento(models.Model):
         string='Realizado',
         default=False
     )
+
+    @api.constrains('coste')
+    def _check_coste(self):
+        for record in self:
+            if record.coste is not None and record.coste < 0:
+                raise ValidationError("El coste del mantenimiento no puede ser negativo.")

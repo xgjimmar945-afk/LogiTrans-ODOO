@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_logitrans_vehiculo,access_logitrans_vehiculo,model_logitrans_vehiculo,,1,1,1,1
 access_logitrans_tipo_carga,access_logitrans_tipo_carga,model_logitrans_tipo_carga,,1,1,1,1
 access_logitrans_mantenimiento,access_logitrans_mantenimiento,model_logitrans_mantenimiento,,1,1,1,1
+access_logitrans_vehiculo_tipo_carga,access_logitrans_vehiculo_tipo_carga,model_logitrans_vehiculo_tipo_carga,,1,1,1,1

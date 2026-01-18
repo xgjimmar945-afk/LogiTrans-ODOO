@@ -17,8 +17,8 @@ class LogitransTipoCarga(models.Model):
         string='Notas internas'
     )
 
-    activo = fields.Boolean(
-        string='Activo',
+    vigente = fields.Boolean(
+        string='Vigente',
         default=True
     )
     vehiculo_ids = fields.Many2many(

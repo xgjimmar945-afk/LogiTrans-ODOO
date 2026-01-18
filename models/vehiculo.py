@@ -9,8 +9,8 @@ MATRICULA_RE = re.compile(r'^\d{4}[A-Z]{3}$')  #sera global asi no la llama cada
 class LogitransVehiculo(models.Model):
     _name = 'logitrans.vehiculo'
     _description = 'Vehículo'
+    _rec_name = 'matricula'
 
-    name = fields.Char(string='Nombre')
 
     anio_fabricacion = fields.Selection(
     [(str(y), str(y)) for y in range(fields.Date.today().year, 1950, -1)],
@@ -22,7 +22,7 @@ class LogitransVehiculo(models.Model):
         string="Fecha de matriculación",
         help="Fecha de primera matriculación. Base legal para ITV y revisiones."
     )
-
+    
     antiguedad = fields.Integer(
         string="Antigüedad (años)",
         compute="_compute_antiguedad",
@@ -55,13 +55,13 @@ class LogitransVehiculo(models.Model):
         ('matricula_unique', 'unique(matricula)', 'La matrícula ya existe.')
     ]
 
-    
+    #esto es para que si el usuario ingresa 1234ABC o 1234 abc lo reescribe y lo unifica todo en el mismo formato
+    #asi puede comparar realmente que es la misma matrícula. Recrea el valor y en write lo reescribe.
     def _normalize_matricula(self, m):
         # deja "1234 ABC" como "1234ABC" y lo pone en mayúsculas
         return re.sub(r'\s+', '', (m or '').strip()).upper()
 
-    #esto es para que si el usuario ingresa 1234ABC o 1234 abc lo reescribe y lo unifica todo en el mismo formato
-    #asi puede comparar realmente que es la misma matrícula. Recrea el valor y en write lo reescribe.
+    
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
@@ -88,6 +88,7 @@ class LogitransVehiculo(models.Model):
                 raise ValidationError("Matrícula inválida: usa 1234ABC o 1234 ABC")
             
     #aqui calcula la antiguedad del coche para las revisiones tecnicas(ITV)
+    @api.depends('fecha_matriculacion') #esto es para que recalcule el campo, en caso de cambiarlo manualmente, pero por lo general lo recalcula al recargar la vista.
     def _compute_antiguedad(self):
         hoy = fields.Date.today()
         for record in self:

@@ -14,6 +14,7 @@
         'views/vehiculo_views.xml',
         'views/mantenimiento_views.xml',
         'views/tipo_carga_views.xml',
+        'views/vehiculo_tipo_carga_views.xml'
     ],
     'installable': True,
     'application': True,

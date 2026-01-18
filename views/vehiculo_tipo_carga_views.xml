@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- TREE -->
+    <record id="view_logitrans_vehiculo_tipo_carga_tree" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo_tipo_carga.tree</field>
+        <field name="model">logitrans.vehiculo_tipo_carga</field>
+        <field name="arch" type="xml">
+            <tree string="Autorizaciones de carga">
+                <field name="vehiculo_id"/>
+                <field name="tipo_carga_id"/>
+                <field name="vigente"/>
+                <field name="fecha_autorizacion"/>
+                <field name="proxima_renovacion" optional="hide"/>
+                <field name="limite_kg" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM -->
+    <record id="view_logitrans_vehiculo_tipo_carga_form" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo_tipo_carga.form</field>
+        <field name="model">logitrans.vehiculo_tipo_carga</field>
+        <field name="arch" type="xml">
+            <form string="Autorización de carga">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="vehiculo_id"/>
+                            <field name="tipo_carga_id"/>
+                            <field name="vigente"/>
+                        </group>
+                        <group>
+                            <field name="fecha_autorizacion"/>
+                            <field name="proxima_renovacion"/>
+                            <field name="limite_kg"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="observaciones"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_logitrans_vehiculo_tipo_carga" model="ir.actions.act_window">
+        <field name="name">Autorizaciones</field>
+        <field name="res_model">logitrans.vehiculo_tipo_carga</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- MENÚ -->
+    <menuitem id="menu_logitrans_autorizaciones"
+              name="Autorizaciones"
+              parent="menu_logitrans_root"
+              action="action_logitrans_vehiculo_tipo_carga"/>
+
+</odoo>
