@@ -16,6 +16,9 @@
         'views/tipo_carga_views.xml',
         'views/vehiculo_tipo_carga_views.xml'
     ],
+    'demo': [
+    'demo/demo.xml',
+    ],
     'installable': True,
     'application': True,
 }

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import re  #esto es una libreria de python para expresiones regulares para las validaciones...
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
@@ -11,6 +10,9 @@ class LogitransVehiculo(models.Model):
     _description = 'Vehículo'
     _rec_name = 'matricula'
 
+    foto = fields.Image(string="Foto",
+                        max_width=1200,
+                        max_height=1200)
 
     anio_fabricacion = fields.Selection(
     [(str(y), str(y)) for y in range(fields.Date.today().year, 1950, -1)],

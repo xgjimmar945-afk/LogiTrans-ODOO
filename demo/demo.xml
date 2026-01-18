@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+  <!-- ===================== -->
+  <!-- VEHICULOS (demo) -->
+  <!-- ===================== -->
+
+  <record id="demo_vehiculo_1234ABC" model="logitrans.vehiculo">
+    <field name="matricula">1234ABC</field>
+    <field name="marca">ACME</field>
+    <field name="modelo">Patito</field>
+    <field name="anio_fabricacion">2010</field>
+    <field name="fecha_matriculacion">2011-01-03</field>
+    <field name="capacidad_kg">2500.0</field>
+    <field name="activo">True</field>
+  </record>
+
+  <record id="demo_vehiculo_4821BCR" model="logitrans.vehiculo">
+    <field name="matricula">4821BCR</field>
+    <field name="marca">Renault</field>
+    <field name="modelo">Kangoo</field>
+    <field name="anio_fabricacion">2020</field>
+    <field name="fecha_matriculacion">2021-03-15</field>
+    <field name="capacidad_kg">650.0</field>
+    <field name="activo">True</field>
+  </record>
+
+  <record id="demo_vehiculo_7395DGT" model="logitrans.vehiculo">
+    <field name="matricula">7395DGT</field>
+    <field name="marca">Citroën</field>
+    <field name="modelo">Bingo</field>
+    <field name="anio_fabricacion">2019</field>
+    <field name="fecha_matriculacion">2019-05-10</field>
+    <field name="capacidad_kg">800.0</field>
+    <field name="activo">True</field>
+  </record>
+
+  <record id="demo_vehiculo_1560KLM" model="logitrans.vehiculo">
+    <field name="matricula">1560KLM</field>
+    <field name="marca">Volkswagen</field>
+    <field name="modelo">Caddy</field>
+    <field name="anio_fabricacion">2021</field>
+    <field name="fecha_matriculacion">2022-02-02</field>
+    <field name="capacidad_kg">900.0</field>
+    <field name="activo">True</field>
+  </record>
+
+  <record id="demo_vehiculo_9043PRS" model="logitrans.vehiculo">
+    <field name="matricula">9043PRS</field>
+    <field name="marca">Ford</field>
+    <field name="modelo">Transit</field>
+    <field name="anio_fabricacion">2018</field>
+    <field name="fecha_matriculacion">2018-09-11</field>
+    <field name="capacidad_kg">1400.0</field>
+    <field name="activo">True</field>
+  </record>
+
+  <record id="demo_vehiculo_2687TRV" model="logitrans.vehiculo">
+    <field name="matricula">2687TRV</field>
+    <field name="marca">Mercedes</field>
+    <field name="modelo">Sprinter</field>
+    <field name="anio_fabricacion">2020</field>
+    <field name="fecha_matriculacion">2021-01-20</field>
+    <field name="capacidad_kg">1700.0</field>
+    <field name="activo">True</field>
+  </record>
+
+  <record id="demo_vehiculo_6112GHR" model="logitrans.vehiculo">
+    <field name="matricula">6112GHR</field>
+    <field name="marca">Iveco</field>
+    <field name="modelo">Daily</field>
+    <field name="anio_fabricacion">2017</field>
+    <field name="fecha_matriculacion">2017-06-01</field>
+    <field name="capacidad_kg">1600.0</field>
+    <field name="activo">True</field>
+  </record>
+
+  <record id="demo_vehiculo_8470MNP" model="logitrans.vehiculo">
+    <field name="matricula">8470MNP</field>
+    <field name="marca">Peugeot</field>
+    <field name="modelo">Partner</field>
+    <field name="anio_fabricacion">2022</field>
+    <field name="fecha_matriculacion">2023-04-18</field>
+    <field name="capacidad_kg">700.0</field>
+    <field name="activo">True</field>
+  </record>
+
+  
+  <!-- TIPOS DE CARGA (demo) -->
+  <record id="demo_carga_estandar" model="logitrans.tipo_carga">
+    <field name="name">Estándar</field>
+    <field name="descripcion">Envíos de tamaño y peso moderado sin requisitos especiales de transporte.</field>
+    <field name="vigente">True</field>
+  </record>
+
+  <record id="demo_carga_perecedera" model="logitrans.tipo_carga">
+    <field name="name">Perecedera</field>
+    <field name="descripcion">Productos con caducidad o sensibles al tiempo, como alimentos frescos.</field>
+    <field name="vigente">True</field>
+  </record>
+
+  <record id="demo_carga_refrigerada" model="logitrans.tipo_carga">
+    <field name="name">Refrigerada</field>
+    <field name="descripcion">Carga que requiere control de temperatura durante el transporte.</field>
+    <field name="vigente">True</field>
+  </record>
+
+  <record id="demo_carga_fragil" model="logitrans.tipo_carga">
+    <field name="name">Frágil</field>
+    <field name="descripcion">Mercancía que necesita manipulación cuidadosa para evitar daños.</field>
+    <field name="vigente">True</field>
+  </record>
+
+  <record id="demo_carga_peligrosa" model="logitrans.tipo_carga">
+    <field name="name">Peligrosa</field>
+    <field name="descripcion">Sustancias o materiales que requieren autorización y medidas de seguridad especiales.</field>
+    <field name="vigente">True</field>
+  </record>
+
+  <record id="demo_carga_voluminosa" model="logitrans.tipo_carga">
+    <field name="name">Voluminosa</field>
+    <field name="descripcion">Carga de gran tamaño que ocupa mucho espacio aunque no sea pesada.</field>
+    <field name="vigente">True</field>
+  </record>
+
+  <record id="demo_carga_electronica" model="logitrans.tipo_carga">
+    <field name="name">Electrónica</field>
+    <field name="descripcion">Equipos electrónicos sensibles a golpes, humedad o descargas.</field>
+    <field name="vigente">True</field>
+  </record>
+
+  <record id="demo_carga_documentacion" model="logitrans.tipo_carga">
+    <field name="name">Documentación</field>
+    <field name="descripcion">Sobres y documentos que requieren entrega rápida y segura.</field>
+    <field name="vigente">True</field>
+  </record>
+
+   
+  <!-- AUTORIZACIONES (demo) -->
+  
+  <!-- 4821BCR -->
+  <record id="demo_aut_01" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+    <field name="tipo_carga_id" ref="demo_carga_refrigerada"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-02-17</field>
+    <field name="limite_kg">200.0</field>
+    <field name="observaciones">Control temperatura. Solo reparto urbano.</field>
+  </record>
+
+  <record id="demo_aut_02" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+    <field name="tipo_carga_id" ref="demo_carga_perecedera"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-02-17</field>
+    <field name="limite_kg">250.0</field>
+    <field name="observaciones">Entrega rápida. Prioridad ruta corta.</field>
+  </record>
+
+  <!-- 7395DGT -->
+  <record id="demo_aut_03" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+    <field name="tipo_carga_id" ref="demo_carga_estandar"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">800.0</field>
+    <field name="observaciones">Paquetería general.</field>
+  </record>
+
+  <record id="demo_aut_04" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+    <field name="tipo_carga_id" ref="demo_carga_documentacion"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">50.0</field>
+    <field name="observaciones">Sobres/documentos. Compartimento separado.</field>
+  </record>
+
+  <record id="demo_aut_05" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+    <field name="tipo_carga_id" ref="demo_carga_electronica"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">200.0</field>
+    <field name="observaciones">Requiere embalaje protegido.</field>
+  </record>
+
+  <!-- 1560KLM -->
+  <record id="demo_aut_06" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+    <field name="tipo_carga_id" ref="demo_carga_fragil"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">150.0</field>
+    <field name="observaciones">Manipulación cuidadosa. Anclajes.</field>
+  </record>
+
+  <record id="demo_aut_07" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+    <field name="tipo_carga_id" ref="demo_carga_electronica"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">200.0</field>
+    <field name="observaciones">Anti-golpes. Evitar humedad.</field>
+  </record>
+
+  <record id="demo_aut_08" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+    <field name="tipo_carga_id" ref="demo_carga_documentacion"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">50.0</field>
+    <field name="observaciones">Entrega prioritaria.</field>
+  </record>
+
+  <!-- 9043PRS -->
+  <record id="demo_aut_09" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
+    <field name="tipo_carga_id" ref="demo_carga_voluminosa"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">1200.0</field>
+    <field name="observaciones">Cargas grandes, sin frío.</field>
+  </record>
+
+  <record id="demo_aut_10" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
+    <field name="tipo_carga_id" ref="demo_carga_estandar"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">1400.0</field>
+    <field name="observaciones">Paquetería grande.</field>
+  </record>
+
+  <!-- 2687TRV -->
+  <record id="demo_aut_11" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+    <field name="tipo_carga_id" ref="demo_carga_estandar"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">1700.0</field>
+    <field name="observaciones">Rutas interurbanas.</field>
+  </record>
+
+  <record id="demo_aut_12" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+    <field name="tipo_carga_id" ref="demo_carga_voluminosa"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">1500.0</field>
+    <field name="observaciones">Carga grande por volumen.</field>
+  </record>
+
+  <record id="demo_aut_13" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+    <field name="tipo_carga_id" ref="demo_carga_fragil"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">200.0</field>
+    <field name="observaciones">Zona de carga asegurada.</field>
+  </record>
+
+  <record id="demo_aut_14" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+    <field name="tipo_carga_id" ref="demo_carga_electronica"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-07-17</field>
+    <field name="limite_kg">300.0</field>
+    <field name="observaciones">Carga sensible.</field>
+  </record>
+
+  <!-- 6112GHR -->
+  <record id="demo_aut_15" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_6112GHR"/>
+    <field name="tipo_carga_id" ref="demo_carga_peligrosa"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-04-17</field>
+    <field name="limite_kg">200.0</field>
+    <field name="observaciones">Permiso especial. Protocolo seguridad.</field>
+  </record>
+
+  <!-- 8470MNP -->
+  <record id="demo_aut_16" model="logitrans.vehiculo_tipo_carga">
+    <field name="vehiculo_id" ref="demo_vehiculo_8470MNP"/>
+    <field name="tipo_carga_id" ref="demo_carga_refrigerada"/>
+    <field name="vigente">True</field>
+    <field name="fecha_autorizacion">2026-01-17</field>
+    <field name="proxima_renovacion">2026-02-17</field>
+    <field name="limite_kg">180.0</field>
+    <field name="observaciones">Última milla frío.</field>
+  </record>
+
+
+</odoo>
