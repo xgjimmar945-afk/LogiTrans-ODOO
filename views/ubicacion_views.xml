@@ -1,0 +1,151 @@
+<odoo>
+  <record id="logitrans_ubicacion_form_view" model="ir.ui.view">
+    <field name="name">logitrans.ubicacion.form</field>
+    <field name="model">logitrans.ubicacion</field>
+    <field name="arch" type="xml">
+      <form string="Ubicacion">
+        <sheet layout="auto">
+          <group>
+            <field name="nombre" />
+          </group>
+          <notebook>
+            <page name="detalles_ubicacion" string="Detalles Ubicación">
+              <group>
+                <field name="provincia" />
+                <field name="ciudad" />
+              </group>
+              <group>
+                <field name="direccion" />
+              </group>
+              <group>
+                <field name="longitud" />
+                <field name="latitud" />
+              </group>
+            </page>
+            <page name="detalles_rutas" string="Detalles Rutas">
+              <group>
+                <field name="rutas_origen_ids" widget="many2many_tags" />
+                <field name="rutas_destino_ids" widget="many2many_tags" />
+              </group>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="logitrans_ubicacion_tree_view" model="ir.ui.view">
+    <field name="name">logitrans.ubicacion.tree</field>
+    <field name="model">logitrans.ubicacion</field>
+    <field name="arch" type="xml">
+      <tree string="Ubicacion">
+        <field name="nombre" />
+        <field name="provincia" />
+        <field name="ciudad" />
+        <field name="direccion" />
+        <field name="longitud" />
+        <field name="latitud" />
+        <field name="rutas_origen_ids" widget="many2many_tags" />
+        <field name="rutas_destino_ids" widget="many2many_tags" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="logitrans_ubicacion_kanban_view" model="ir.ui.view">
+    <field name="name">logitrans.ubicacion.kanban</field>
+    <field name="model">logitrans.ubicacion</field>
+    <field name="arch" type="xml">
+      <kanban class="o_kanban_small_column">
+        <field name="nombre"/>
+        <field name="provincia"/>
+        <field name="ciudad"/>
+        <field name="direccion"/>
+        <field name="longitud"/>
+        <field name="latitud"/>
+
+        <templates>
+          <t t-name="kanban-box">
+            <div class="oe_kanban_global_click o_kanban_card">
+              <div class="o_kanban_card_header">
+                <strong>
+                  <field name="nombre"/>
+                </strong>
+              </div>
+
+              <div class="o_kanban_card_content">
+                <div>
+                  <strong>Provincia:</strong>
+                  <field name="provincia"/>
+                </div>
+
+                <div>
+                  <strong>Ciudad:</strong>
+                  <field name="ciudad"/>
+                </div>
+
+                <div>
+                  <strong>Direccion:</strong>
+                  <field name="direccion"/>
+                </div>
+
+                <div>
+                  <strong>Longitud:</strong>
+                  <field name="longitud"/>
+                </div>
+
+                <div>
+                  <strong>Latitud:</strong>
+                  <field name="latitud"/>
+                </div>
+
+                <div class="o_kanban_card_footer">
+                  <strong>Rutas de origen:</strong>
+                  <field name="rutas_origen_ids" widget="many2many_tags"/>
+                </div>
+
+                <div class="o_kanban_card_footer">
+                  <strong>Rutas de destino:</strong>
+                  <field name="rutas_destino_ids" widget="many2many_tags"/>
+                </div>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <record id="logitrans_ubicacion_search_view" model="ir.ui.view">
+    <field name="name">logitrans.ubicacion.search</field>
+    <field name="model">logitrans.ubicacion</field>
+    <field name="arch" type="xml">
+      <search string="Búsqueda de Ubicaciones">
+
+        <field name="nombre" />
+        <field name="provincia" />
+        <field name="ciudad" />
+        <field name="direccion" />
+
+        <separator/>
+
+        <group expand="0" string="Filtrar por">
+
+          <filter name="group_by_provincia" string="Por Provincia" context="{'group_by':'provincia'}"/>
+
+          <filter name="group_by_ciudad" string="Por Ciudad" context="{'group_by':'ciudad'}"/>
+
+        </group>
+      </search>
+    </field>
+  </record>
+
+
+  <record id="ubicacion_list_action" model="ir.actions.act_window">
+    <field name="name">Ubicacion</field>
+    <field name="res_model">logitrans.ubicacion</field>
+    <field name="view_mode">tree,form,kanban</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Create the first ubicacion</p>
+    </field>
+  </record>
+</odoo>

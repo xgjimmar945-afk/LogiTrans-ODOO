@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem name="Logi Trans" id="main_logitrans_menu" groups="group_logitrans_manager"/>
+        <!-- menu categories -->
+        <menuitem name="Logi Trans" id="logitrans_menu" groups="group_logitrans_manager" parent="main_logitrans_menu"/>
+        <!-- actions -->
+        <menuitem name="Envios" id="envios_menu" parent="logitrans_menu" groups="group_logitrans_manager" action="envios_list_action"/>
+        <menuitem name="Rutas" id="rutas_menu" parent="logitrans_menu" groups="group_logitrans_manager" action="rutas_list_action"/>
+        <menuitem name="Ubicaciones" id="ubicacion_menu" parent="logitrans_menu" groups="group_logitrans_manager" action="ubicacion_list_action"/>
+    </data>
+</odoo>
