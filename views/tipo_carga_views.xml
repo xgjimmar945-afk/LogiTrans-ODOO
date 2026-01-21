@@ -42,11 +42,35 @@
         </field>
     </record>
 
+    <!-- SEARCH: Tipo de carga -->
+    <record id="view_logitrans_tipo_carga_search" model="ir.ui.view">
+        <field name="name">logitrans.tipo_carga.search</field>
+        <field name="model">logitrans.tipo_carga</field>
+        <field name="arch" type="xml">
+            <search string="Buscar tipos de carga">
+                <!-- Búsqueda rápida -->
+                <field name="name"/>
+                <field name="vigente"/>
+
+                <!-- Filtros -->
+                <separator/>
+                <filter string="Vigentes" name="f_vig" domain="[('vigente','=',True)]"/>
+                <filter string="No vigentes" name="f_novig" domain="[('vigente','=',False)]"/>
+
+                <!-- Agrupar por -->
+                <group expand="0" string="Agrupar por">
+                    <filter string="Vigente" name="g_vig" context="{'group_by':'vigente'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <!-- ACTION -->
     <record id="action_logitrans_tipo_carga" model="ir.actions.act_window">
         <field name="name">Tipos de carga</field>
         <field name="res_model">logitrans.tipo_carga</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_logitrans_tipo_carga_search"/>
     </record>
 
     <!-- MENÚ -->

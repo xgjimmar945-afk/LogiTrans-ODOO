@@ -45,11 +45,114 @@
         </field>
     </record>
 
+    <!-- SEARCH -->
+    <record id="view_logitrans_vehiculo_tipo_carga_search" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo_tipo_carga.search</field>
+        <field name="model">logitrans.vehiculo_tipo_carga</field>
+        <field name="arch" type="xml">
+            <search string="Buscar autorizaciones">
+
+                <!-- Búsqueda rápida -->
+                <field name="vehiculo_id"/>
+                <field name="tipo_carga_id"/>
+                <field name="vigente"/>
+                <field name="fecha_autorizacion"/>
+                <field name="proxima_renovacion"/>
+
+                <separator/>
+
+                <!-- Filtros -->
+                <filter string="Vigentes" name="f_vig" domain="[('vigente','=',True)]"/>
+                <filter string="No vigentes" name="f_novig" domain="[('vigente','=',False)]"/>
+
+                <!-- Agrupar por -->
+                <group expand="0" string="Agrupar por">
+                    <filter string="Vehículo" name="g_veh" context="{'group_by':'vehiculo_id'}"/>
+                    <filter string="Tipo de carga" name="g_tipo" context="{'group_by':'tipo_carga_id'}"/>
+                    <filter string="Vigente" name="g_vig" context="{'group_by':'vigente'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- KANBAN: Autorizaciones agrupadas por Tipo de carga -->
+    <record id="view_logitrans_vehiculo_tipo_carga_kanban" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo_tipo_carga.kanban</field>
+        <field name="model">logitrans.vehiculo_tipo_carga</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="tipo_carga_id" class="o_kanban_small_column">
+                <field name="vehiculo_id"/>
+                <field name="tipo_carga_id"/>
+                <field name="vigente"/>
+                <field name="fecha_autorizacion"/>
+                <field name="proxima_renovacion"/>
+                <field name="limite_kg"/>
+
+                <!-- Campos del vehículo que vamos a mostrar en la tarjeta -->
+                <field name="vehiculo_id" />
+                <!-- Nota: la foto está en el vehículo, la accedemos como vehiculo_id.foto en el template -->
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+                            <div class="o_kanban_record_top">
+                                <strong>
+                                    <t t-esc="record.vehiculo_id.value and record.vehiculo_id.value[1]"/>
+                                </strong>
+                            </div>
+
+                            <!-- Imagen del vehículo (si existe) -->
+                            <t t-if="record.vehiculo_id.raw_value">
+                                <div class="mt8">
+                                    <img t-att-src="'/web/image/logitrans.vehiculo/%s/foto' % record.vehiculo_id.raw_value"
+                                        style="max-width: 100%; border-radius: 10px;"/>
+                                </div>
+                            </t>
+
+                            <div class="mt8">
+                                <span><strong>Vigente:</strong></span>
+                                <span><t t-esc="record.vigente.value"/></span>
+                            </div>
+
+                            <div>
+                                <span><strong>Renovación:</strong></span>
+                                <span><t t-esc="record.proxima_renovacion.value"/></span>
+                            </div>
+
+                            <div>
+                                <span><strong>Límite (kg):</strong></span>
+                                <span><t t-esc="record.limite_kg.value"/></span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Calendario de renovaciones de autorizaciones por tipo de carga -->
+    <record id="view_logitrans_vehiculo_tipo_carga_calendar" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo_tipo_carga.calendar</field>
+        <field name="model">logitrans.vehiculo_tipo_carga</field>
+        <field name="arch" type="xml">
+            <calendar string="Renovaciones"
+                    date_start="proxima_renovacion"
+                    color="tipo_carga_id">
+                <field name="name"/>
+                <field name="vehiculo_id"/>
+                <field name="tipo_carga_id"/>
+                <field name="vigente"/>
+            </calendar>
+        </field>
+    </record>
+
     <!-- ACTION -->
     <record id="action_logitrans_vehiculo_tipo_carga" model="ir.actions.act_window">
         <field name="name">Autorizaciones</field>
         <field name="res_model">logitrans.vehiculo_tipo_carga</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">calendar,kanban,tree,form</field>
+        <field name="search_view_id" ref="view_logitrans_vehiculo_tipo_carga_search"/>
     </record>
 
     <!-- MENÚ -->

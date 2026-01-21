@@ -304,6 +304,119 @@
     <field name="limite_kg">180.0</field>
     <field name="observaciones">Última milla frío.</field>
   </record>
+    <!-- ===================== -->
+  <!-- MANTENIMIENTOS (demo) -->
+  <!-- ===================== -->
+
+  <record id="demo_mant_01" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+    <field name="fecha">2026-01-05</field>
+    <field name="tipo">preventivo</field>
+    <field name="coste">35.0</field>
+    <field name="descripcion">Revisión general (aceite, niveles, luces).</field>
+    <field name="state">solicitud</field>
+  </record>
+
+  <record id="demo_mant_02" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+    <field name="fecha">2026-01-07</field>
+    <field name="tipo">itv</field>
+    <field name="coste">45.0</field>
+    <field name="descripcion">ITV anual programada.</field>
+    <field name="state">programado</field>
+  </record>
+
+  <record id="demo_mant_03" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+    <field name="fecha">2026-01-08</field>
+    <field name="tipo">reparacion</field>
+    <field name="coste">120.0</field>
+    <field name="descripcion">Sustitución de pastillas de freno.</field>
+    <field name="state">en_proceso</field>
+  </record>
+
+  <record id="demo_mant_04" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
+    <field name="fecha">2026-01-09</field>
+    <field name="tipo">estetico</field>
+    <field name="coste">60.0</field>
+    <field name="descripcion">Limpieza interior + pulido exterior.</field>
+    <field name="state">realizado</field>
+  </record>
+
+  <record id="demo_mant_05" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+    <field name="fecha">2026-01-10</field>
+    <field name="tipo">reparacion</field>
+    <field name="coste">0.0</field>
+    <field name="descripcion">Diagnóstico inicial (sin coste).</field>
+    <field name="state">solicitud</field>
+  </record>
+
+  <record id="demo_mant_06" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_6112GHR"/>
+    <field name="fecha">2026-01-11</field>
+    <field name="tipo">preventivo</field>
+    <field name="coste">50.0</field>
+    <field name="descripcion">Cambio de filtros + revisión neumáticos.</field>
+    <field name="state">programado</field>
+  </record>
+
+  <record id="demo_mant_07" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_8470MNP"/>
+    <field name="fecha">2026-01-12</field>
+    <field name="tipo">itv</field>
+    <field name="coste">45.0</field>
+    <field name="descripcion">ITV (vehículo de última milla).</field>
+    <field name="state">en_proceso</field>
+  </record>
+
+  <record id="demo_mant_08" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_1234ABC"/>
+    <field name="fecha">2026-01-13</field>
+    <field name="tipo">preventivo</field>
+    <field name="coste">40.0</field>
+    <field name="descripcion">Revisión básica para puesta a punto.</field>
+    <field name="state">realizado</field>
+  </record>
+
+  <record id="demo_mant_09" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+    <field name="fecha">2025-12-20</field>
+    <field name="tipo">reparacion</field>
+    <field name="coste">210.0</field>
+    <field name="descripcion">Reparación sistema de refrigeración.</field>
+    <field name="state">realizado</field>
+  </record>
+
+  <record id="demo_mant_10" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+    <field name="fecha">2025-12-28</field>
+    <field name="tipo">estetico</field>
+    <field name="coste">30.0</field>
+    <field name="descripcion">Limpieza rápida (fin de año).</field>
+    <field name="state">cancelado</field>
+    <field name="observaciones">Cancelado por falta de disponibilidad en taller.</field>
+  </record>
+
+  <record id="demo_mant_11" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+    <field name="fecha">2025-11-15</field>
+    <field name="tipo">preventivo</field>
+    <field name="coste">55.0</field>
+    <field name="descripcion">Revisión pre-invierno.</field>
+    <field name="state">realizado</field>
+  </record>
+
+  <record id="demo_mant_12" model="logitrans.mantenimiento">
+    <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
+    <field name="fecha">2025-11-30</field>
+    <field name="tipo">reparacion</field>
+    <field name="coste">180.0</field>
+    <field name="descripcion">Sustitución de batería.</field>
+    <field name="state">cancelado</field>
+    <field name="observaciones">Cancelado por pieza no disponible (batería).</field>
+  </record>
 
 
 </odoo>

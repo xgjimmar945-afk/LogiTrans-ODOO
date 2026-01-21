@@ -62,11 +62,55 @@
         </field>
     </record>
 
+    <!-- KANBAN: Vehículos agrupados por marca -->
+    <record id="view_logitrans_vehiculo_kanban" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo.kanban</field>
+        <field name="model">logitrans.vehiculo</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="marca" class="o_kanban_small_column">
+                <field name="matricula"/>
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="capacidad_kg"/>
+                <field name="activo"/>
+                
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+
+                            <div class="o_kanban_record_top">
+                                <strong>
+                                    <t t-esc="record.matricula.value"/>
+                                </strong>
+                                <span class="ml8">
+                                    <t t-esc="record.modelo.value"/>
+                                </span>
+                            </div>
+
+                            
+                            <div class="mt8">
+                                <span><strong>Capacidad:</strong></span>
+                                <span><t t-esc="record.capacidad_kg.value"/> kg</span>
+                            </div>
+
+                            <div>
+                                <span><strong>Activo:</strong></span>
+                                <span><t t-esc="record.activo.value and 'Sí' or 'No'"/></span>
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
     <!-- ACTION -->
     <record id="action_logitrans_vehiculo" model="ir.actions.act_window">
         <field name="name">Vehículos</field>
         <field name="res_model">logitrans.vehiculo</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
 
     <!-- MENÚ -->

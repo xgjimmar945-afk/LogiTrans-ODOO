@@ -41,11 +41,6 @@ class LogitransMantenimiento(models.Model):
         string='Descripción'
     )
 
-    realizado = fields.Boolean(
-        string='Realizado',
-        default=False
-    )
-
     #Workflow:
     state = fields.Selection(
         selection=[
@@ -60,7 +55,7 @@ class LogitransMantenimiento(models.Model):
         required=True
     )
 
-    observaciones = fields.Text(string='Observaciones')
+    observaciones = fields.Text(string='Motivo Cancelación:')
 
     #el coste no puede ser negativo:
     @api.constrains('coste')
@@ -86,7 +81,7 @@ class LogitransMantenimiento(models.Model):
     def _check_motivo_cancelacion(self):
         for record in self:
             if record.state == 'cancelado' and not (record.observaciones or '').strip():
-                raise ValidationError("Para cancelar un mantenimiento debes indicar el motivo en Observaciones.")
+                raise ValidationError("Para cancelar un mantenimiento debes indicar el motivo de la cancelación.")
             
     #botones/transiciones: 
     def action_programar(self):
@@ -94,13 +89,13 @@ class LogitransMantenimiento(models.Model):
             # Regla: debe existir fecha y tipo para programar
             if not record.fecha or not record.tipo:
                 raise ValidationError("Para programar, debes indicar Fecha y Tipo de mantenimiento.")
-            record.write({'state': 'programado', 'realizado': False})
+            record.write({'state': 'programado'})
 
     def action_iniciar(self):
         for record in self:
             if record.state != 'programado':
                 raise ValidationError("Solo se puede iniciar un mantenimiento que esté en estado Programado.")
-            record.write({'state': 'en_proceso', 'realizado': False})
+            record.write({'state': 'en_proceso'})
 
     def action_finalizar(self):
         for record in self:
@@ -113,11 +108,4 @@ class LogitransMantenimiento(models.Model):
             if record.state == 'realizado':
                 raise ValidationError("No se puede cancelar un mantenimiento que ya está Realizado.")
             # La obligación del motivo controla el constrains, aquí solo cambiamos state
-            record.write({'state': 'cancelado', 'realizado': False})       
-
-
-
-
-
-
-    
+            record.write({'state': 'cancelado'})       
