@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- TREE (lista) -->
+    <record id="view_logitrans_vehiculo_tree" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo.tree</field>
+        <field name="model">logitrans.vehiculo</field>
+        <field name="arch" type="xml">
+            <tree string="Vehículos">
+                <field name="matricula"/>
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="anio_fabricacion"/>
+                <field name="fecha_matriculacion"/>
+                <field name="capacidad_kg"/>
+                <field name="activo"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM (ficha) -->
+    <record id="view_logitrans_vehiculo_form" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo.form</field>
+        <field name="model">logitrans.vehiculo</field>
+        <field name="arch" type="xml">
+            <form string="Vehículo">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="matricula"/>
+                            <field name="marca"/>
+                            <field name="modelo"/>
+
+                            <field name="anio_fabricacion"/>
+                            <field name="fecha_matriculacion"/>
+                            <field name="antiguedad" readonly="1"/>
+
+                        </group>
+                        <group>
+                            <field name="capacidad_kg"/>
+                            <field name="activo"/>
+                            <field name="tipo_carga_ids" widget="many2many_tags" />
+
+                            <field name="foto" widget="image" nolabel="1" options="{'size':[350,350]}" 
+                            style="border-radius: 12px;"/>
+                        </group>
+                        
+                    </group>
+                    <notebook>
+                        <page string="Mantenimientos">
+                            <field name="mantenimiento_ids">
+                                <tree editable="bottom">
+                                    <field name="fecha"/>
+                                    <field name="tipo"/>
+                                    <field name="coste"/>
+                                    <field name="descripcion"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- KANBAN: Vehículos agrupados por marca -->
+    <record id="view_logitrans_vehiculo_kanban" model="ir.ui.view">
+        <field name="name">logitrans.vehiculo.kanban</field>
+        <field name="model">logitrans.vehiculo</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="marca" class="o_kanban_small_column">
+                <field name="matricula"/>
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="capacidad_kg"/>
+                <field name="activo"/>
+                <field name="foto"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+
+                            <div class="o_kanban_record_top">
+                                <strong>
+                                    <t t-esc="record.matricula.value"/>
+                                </strong>
+                                <span class="ml8">
+                                    <t t-esc="record.modelo.value"/>
+                                </span>
+                            </div>
+
+                            
+                            <div class="mt8">
+                                <span><strong>Capacidad:</strong></span>
+                                <span><t t-esc="record.capacidad_kg.value"/> kg</span>
+                            </div>
+
+                            <div>
+                                <span><strong>Activo:</strong></span>
+                                <span><t t-esc="record.activo.value and 'Sí' or 'No'"/></span>
+                            </div>
+
+                        </div>
+                    </t>
+                    <t t-if="record.foto and record.foto.raw_value">
+                        <div class="mt8">
+                            <img t-att-src="kanban_image('logitrans.vehiculo', 'foto', record.id.raw_value)"
+                                style="max-width: 100%; border-radius: 10px;"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_logitrans_vehiculo" model="ir.actions.act_window">
+        <field name="name">Vehículos</field>
+        <field name="res_model">logitrans.vehiculo</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <!-- MENÚ -->
+    <menuitem id="menu_logitrans_root" name="LogiTrans"/>
+    <menuitem id="menu_logitrans_vehiculo" name="Vehículos" parent="menu_logitrans_root" action="action_logitrans_vehiculo"/>
+</odoo>

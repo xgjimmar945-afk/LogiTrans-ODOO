@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- TREE: listado de mantenimientos -->
+    <record id="view_logitrans_mantenimiento_tree" model="ir.ui.view">
+        <field name="name">logitrans.mantenimiento.tree</field>
+        <field name="model">logitrans.mantenimiento</field>
+        <field name="arch" type="xml">
+            <tree string="Mantenimientos">
+                <field name="vehiculo_id"/>
+                <field name="fecha"/>
+                <field name="tipo"/>
+                <field name="state"/>
+                <field name="coste"/>
+                
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM: ficha de mantenimiento -->
+    <record id="view_logitrans_mantenimiento_form" model="ir.ui.view">
+        <field name="name">logitrans.mantenimiento.form</field>
+        <field name="model">logitrans.mantenimiento</field>
+        <field name="arch" type="xml">
+
+    <form string="Mantenimiento">
+    <header>
+        <field name="state"
+               widget="statusbar"
+               statusbar_visible="solicitud,programado,en_proceso,realizado,cancelado"/>
+
+        <button name="action_programar" type="object" string="Programar"
+                class="btn-primary"
+                attrs="{'invisible':[('state','!=','solicitud')]}"/>
+
+        <button name="action_iniciar" type="object" string="Iniciar"
+                class="btn-primary"
+                attrs="{'invisible':[('state','!=','programado')]}"/>
+
+        <button name="action_finalizar" type="object" string="Finalizar"
+                class="btn-success"
+                attrs="{'invisible':[('state','!=','en_proceso')]}"/>
+
+        <button name="action_cancelar" type="object" string="Cancelar"
+                class="btn-secondary"
+                attrs="{'invisible':[('state','in',['realizado','cancelado'])]}"/>
+    </header>
+
+            <sheet>
+                <group>
+                    <group>
+                        <field name="vehiculo_id" required="1"/>
+                        <field name="fecha" required="1"/>
+                        <field name="tipo" required="1"/>
+                    </group>
+                    <group>
+                        <field name="coste"/>
+                        
+                    </group>
+                </group>
+
+                <group>
+                    <field name="descripcion"/>
+                    <field name="observaciones" 
+                        string="Motivo de la Cancelación"
+                        placeholder="Escribe el motivo"
+                        />
+                </group>
+            </sheet>
+    </form>
+
+    </field>
+    </record>
+
+    <!-- KANBAN: Mantenimientos -->
+    <record id="view_logitrans_mantenimiento_kanban" model="ir.ui.view">
+        <field name="name">logitrans.mantenimiento.kanban</field>
+        <field name="model">logitrans.mantenimiento</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_small_column">
+                <!-- Campos que se usan dentro de la tarjeta -->
+                <field name="vehiculo_id"/>
+                <field name="fecha"/>
+                <field name="tipo"/>
+                <field name="coste"/>
+                <field name="state"/>
+                <field name="observaciones"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+                            <div class="o_kanban_record_top">
+                                <strong>
+                                    <t t-esc="record.vehiculo_id.value and record.vehiculo_id.value[1]"/>
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span><strong>Fecha:</strong></span>
+                                <span><t t-esc="record.fecha.value"/></span>
+                            </div>
+
+                            <div>
+                                <span><strong>Tipo:</strong></span>
+                                <span><t t-esc="record.tipo.value"/></span>
+                            </div>
+
+                            <div>
+                                <span><strong>Coste:</strong></span>
+                                <span><t t-esc="record.coste.value"/></span>
+                            </div>
+
+                            <t t-if="record.state.value == 'cancelado' and record.observaciones.value">
+                                <div class="mt8">
+                                    <span><strong>Motivo:</strong></span>
+                                    <span><t t-esc="record.observaciones.value"/></span>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    
+
+    <!-- GRAPH: Mantenimientos -->
+    <record id="view_logitrans_mantenimiento_graph" model="ir.ui.view">
+        <field name="name">logitrans.mantenimiento.graph</field>
+        <field name="model">logitrans.mantenimiento</field>
+        <field name="arch" type="xml">
+            <graph string="Mantenimientos" type="bar">
+                <!-- Medida: coste total -->
+                <field name="coste" type="measure"/>
+
+                <!-- Dimensiones -->
+                <field name="fecha" interval="month"/>
+                <field name="tipo" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ACTION: abre tree+form -->
+    <record id="action_logitrans_mantenimiento" model="ir.actions.act_window">
+        <field name="name">Mantenimientos</field>
+        <field name="res_model">logitrans.mantenimiento</field>
+        <field name="view_mode">kanban,tree,form,graph</field>
+        
+    </record>
+
+    <!-- MENÚ: dentro de LogiTrans -->
+    <menuitem id="menu_logitrans_mantenimiento"
+              name="Mantenimientos"
+              parent="menu_logitrans_root"
+              action="action_logitrans_mantenimiento"/>
+</odoo>

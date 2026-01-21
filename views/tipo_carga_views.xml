@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- TREE -->
+    <record id="view_logitrans_tipo_carga_tree" model="ir.ui.view">
+        <field name="name">logitrans.tipo_carga.tree</field>
+        <field name="model">logitrans.tipo_carga</field>
+        <field name="arch" type="xml">
+            <tree string="Tipos de carga">
+                <field name="name"/>
+                <field name="descripcion"/>
+                <field name="vigente"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM -->
+    <record id="view_logitrans_tipo_carga_form" model="ir.ui.view">
+        <field name="name">logitrans.tipo_carga.form</field>
+        <field name="model">logitrans.tipo_carga</field>
+        <field name="arch" type="xml">
+            <form string="Tipo de carga">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="vigente"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="descripcion"/>
+                        <field name="nota_admin"/>
+                    </group>
+
+                    <!-- opcional: ver vehículos relacionados -->
+                    <group>
+                        <field name="vehiculo_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- SEARCH: Tipo de carga -->
+    <record id="view_logitrans_tipo_carga_search" model="ir.ui.view">
+        <field name="name">logitrans.tipo_carga.search</field>
+        <field name="model">logitrans.tipo_carga</field>
+        <field name="arch" type="xml">
+            <search string="Buscar tipos de carga">
+                <!-- Búsqueda rápida -->
+                <field name="name"/>
+                <field name="vigente"/>
+
+                <!-- Filtros -->
+                <separator/>
+                <filter string="Vigentes" name="f_vig" domain="[('vigente','=',True)]"/>
+                <filter string="No vigentes" name="f_novig" domain="[('vigente','=',False)]"/>
+
+                <!-- Agrupar por -->
+                <group expand="0" string="Agrupar por">
+                    <filter string="Vigente" name="g_vig" context="{'group_by':'vigente'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_logitrans_tipo_carga" model="ir.actions.act_window">
+        <field name="name">Tipos de carga</field>
+        <field name="res_model">logitrans.tipo_carga</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_logitrans_tipo_carga_search"/>
+    </record>
+
+    <!-- MENÚ -->
+    <menuitem id="menu_logitrans_tipo_carga"
+              name="Tipos de carga"
+              parent="menu_logitrans_root"
+              action="action_logitrans_tipo_carga"/>
+</odoo>
