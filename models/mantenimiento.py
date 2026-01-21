@@ -101,7 +101,7 @@ class LogitransMantenimiento(models.Model):
         for record in self:
             if record.state != 'en_proceso':
                 raise ValidationError("Solo se puede finalizar un mantenimiento que esté En proceso.")
-            record.write({'state': 'realizado', 'realizado': True})
+            record.write({'state': 'realizado'})
 
     def action_cancelar(self):
         for record in self:

@@ -14,7 +14,10 @@
         'views/vehiculo_views.xml',
         'views/mantenimiento_views.xml',
         'views/tipo_carga_views.xml',
-        'views/vehiculo_tipo_carga_views.xml'
+        'views/vehiculo_tipo_carga_views.xml',
+        'reports/reports.xml',
+        'reports/mantenimiento_report.xml',
+        'reports/vehiculo_report.xml',
     ],
     'demo': [
     'demo/demo.xml',

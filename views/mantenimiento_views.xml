@@ -67,7 +67,7 @@
                         />
                 </group>
             </sheet>
-        </form>
+    </form>
 
     </field>
     </record>
@@ -123,11 +123,29 @@
         </field>
     </record>
 
+    
+
+    <!-- GRAPH: Mantenimientos -->
+    <record id="view_logitrans_mantenimiento_graph" model="ir.ui.view">
+        <field name="name">logitrans.mantenimiento.graph</field>
+        <field name="model">logitrans.mantenimiento</field>
+        <field name="arch" type="xml">
+            <graph string="Mantenimientos" type="bar">
+                <!-- Medida: coste total -->
+                <field name="coste" type="measure"/>
+
+                <!-- Dimensiones -->
+                <field name="fecha" interval="month"/>
+                <field name="tipo" type="col"/>
+            </graph>
+        </field>
+    </record>
+
     <!-- ACTION: abre tree+form -->
     <record id="action_logitrans_mantenimiento" model="ir.actions.act_window">
         <field name="name">Mantenimientos</field>
         <field name="res_model">logitrans.mantenimiento</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">kanban,tree,form,graph</field>
         
     </record>
 

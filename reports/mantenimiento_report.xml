@@ -1,0 +1,61 @@
+<odoo>
+  <template id="report_mantenimiento_document">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <!-- Usamos external_layout para incluir logo y datos de la empresa -->
+        <t t-call="web.external_layout">
+        <!-- esto es como en el header de hmtl para cambiar los colores en vez de css-->
+        <style>
+            .lt_title { color: #562299; margin-bottom: 12px; }
+            .lt_section { color: #2e3a8c; margin-top: 16px; }
+            .lt_label { font-weight: 700; color: #2e3a8c; width: 30%; }
+            .lt_table td { padding: 4px 0; }
+            <!--Quita viñetas del footer (lista de datos de empresa)-->
+            .footer ul { list-style: none !important; padding-left: 0 !important; margin: 0 !important; }
+            .footer li { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+        </style>
+          <div class="page">
+
+            <h2 class="lt_title">Informe de mantenimiento</h2>
+
+            <table class="table table-sm lt_table" style="width:100%;">
+              <tbody>
+                <tr>
+                  <td class="lt_label">Vehículo</td>
+                  <td><t t-esc="o.vehiculo_id.matricula or ''"/></td>
+                </tr>
+                <tr>
+                  <td class="lt_label">Fecha</td>
+                  <td><t t-esc="o.fecha or ''"/></td>
+                </tr>
+                <tr>
+                  <td class="lt_label">Tipo</td>
+                  <td><t t-esc="o.tipo or ''"/></td>
+                </tr>
+                <tr>
+                  <td class="lt_label">Estado</td>
+                  <td><t t-esc="o.state or ''"/></td>
+                </tr>
+                <tr>
+                  <td class="lt_label">Coste</td>
+                  <td><t t-esc="('%.2f' % (o.coste or 0.0))"/> €</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <t t-if="o.descripcion">
+              <h4 class="lt_section">Descripción</h4>
+              <p><t t-esc="o.descripcion"/></p>
+            </t>
+
+            <t t-if="o.state == 'cancelado' and o.observaciones">
+              <h4 class="lt_section">Motivo de cancelación</h4>
+              <p><t t-esc="o.observaciones"/></p>
+            </t>
+
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>
