@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+logitrans.envios,logitrans.envios,model_logitrans_envios,base.group_user,1,1,1,1
+logitrans.rutas,logitrans.rutas,model_logitrans_rutas,base.group_user,1,1,1,1
+logitrans.ubicacion,logitrans.ubicacion,model_logitrans_ubicacion,base.group_user,1,1,1,1
