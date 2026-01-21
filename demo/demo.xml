@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+
+        <!-- Datos de demo de ubicaciones-->
+        <record id="Ubicacion0" model="logitrans.ubicacion">
+            <field name="nombre">Ubicacion 0</field>
+            <field name="direccion">Direccion 0</field>
+            <field name="provincia" ref="base.state_es_se"/>
+            <field name="ciudad">Dos Hermanas</field>
+            <field name="longitud">37.2744</field>
+            <field name="latitud">-5.9249</field>
+        </record>
+        <record id="Ubicacion1" model="logitrans.ubicacion">
+            <field name="nombre">Ubicacion 1</field>
+            <field name="direccion">Direccion 1</field>
+            <field name="provincia" ref="base.state_es_se"/>
+            <field name="ciudad">Sevilla</field>
+            <field name="longitud">37.3891</field>
+            <field name="latitud">-5.9845</field>
+        </record>
+        <record id="Ubicacion2" model="logitrans.ubicacion">
+            <field name="nombre">Ubicacion 2</field>
+            <field name="direccion">Direccion 2</field>
+            <field name="provincia" ref="base.state_es_ca"/>
+            <field name="ciudad">Jerez de la Frontera</field>
+            <field name="longitud">36.6867</field>
+            <field name="latitud">-6.1344</field>
+        </record>
+
+        <!-- Datos de demo de rutas-->
+        <record id="Ruta0" model="logitrans.rutas">
+            <field name="tipo_ruta">Urbana</field>
+            <field name="distancia_estimada">20</field>
+            <field name="destino_ubicacion_id" ref="Ubicacion0"/>
+            <field name="origen_ubicacion_id" ref="Ubicacion1"/>
+        </record>
+        <record id="Ruta1" model="logitrans.rutas">
+            <field name="tipo_ruta">Nacional</field>
+            <field name="distancia_estimada">500</field>
+            <field name="destino_ubicacion_id" ref="Ubicacion0"/>
+            <field name="origen_ubicacion_id" ref="Ubicacion2"/>
+        </record>
+        <record id="Ruta2" model="logitrans.rutas">
+            <field name="tipo_ruta">Provincial</field>
+            <field name="distancia_estimada">100</field>
+            <field name="destino_ubicacion_id" ref="Ubicacion2"/>
+            <field name="origen_ubicacion_id" ref="Ubicacion1"/>
+        </record>
+
+        <!-- Datos de demo de envios-->
+        <record id="Envio0" model="logitrans.envios">
+            <field name="nombre">Envio 0</field>
+            <field name="fecha_creacion">2025-12-12</field>
+            <field name="peso_kg">20</field>
+            <field name="rutas_ids" eval="[(6, 0, [ref('Ruta0')])]"/>
+        </record>
+        <record id="Envio1" model="logitrans.envios">
+            <field name="nombre">Envio 1</field>
+            <field name="fecha_creacion">2026-01-01</field>
+            <field name="peso_kg">20</field>
+            <field name="rutas_ids" eval="[(6, 0, [ref('Ruta1')])]"/>
+        </record>
+        <record id="Envio2" model="logitrans.envios">
+            <field name="nombre">Envio 2</field>
+            <field name="fecha_creacion">2026-01-15</field>
+            <field name="peso_kg">20</field>
+            <field name="rutas_ids" eval="[(6, 0, [ref('Ruta2')])]"/>
+        </record>
+
+
+    </data>
+</odoo>
