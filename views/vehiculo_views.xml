@@ -73,7 +73,7 @@
                 <field name="modelo"/>
                 <field name="capacidad_kg"/>
                 <field name="activo"/>
-                
+                <field name="foto"/>
 
                 <templates>
                     <t t-name="kanban-box">
@@ -99,6 +99,12 @@
                                 <span><t t-esc="record.activo.value and 'Sí' or 'No'"/></span>
                             </div>
 
+                        </div>
+                    </t>
+                    <t t-if="record.foto and record.foto.raw_value">
+                        <div class="mt8">
+                            <img t-att-src="kanban_image('logitrans.vehiculo', 'foto', record.id.raw_value)"
+                                style="max-width: 100%; border-radius: 10px;"/>
                         </div>
                     </t>
                 </templates>

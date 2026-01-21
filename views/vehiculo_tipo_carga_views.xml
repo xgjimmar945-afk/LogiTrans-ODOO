@@ -112,7 +112,7 @@
 
                             <div class="mt8">
                                 <span><strong>Vigente:</strong></span>
-                                <span><t t-esc="record.vigente.value"/></span>
+                                <span><t t-esc="record.vigente.value and 'Si' or 'No'"/></span>
                             </div>
 
                             <div>
