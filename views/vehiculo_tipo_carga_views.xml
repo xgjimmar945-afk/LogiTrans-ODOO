@@ -167,10 +167,6 @@
         <field name="search_view_id" ref="view_logitrans_vehiculo_tipo_carga_search"/>
     </record>
 
-    <!-- MENÚ -->
-    <menuitem id="menu_logitrans_autorizaciones"
-              name="Autorizaciones"
-              parent="menu_logitrans_root"
-              action="action_logitrans_vehiculo_tipo_carga"/>
+    <!-- menu pasa a menu_views -->
 
 </odoo>
