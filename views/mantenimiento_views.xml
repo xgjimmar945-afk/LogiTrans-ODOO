@@ -149,9 +149,6 @@
         
     </record>
 
-    <!-- MENÚ: dentro de LogiTrans -->
-    <menuitem id="menu_logitrans_mantenimiento"
-              name="Mantenimientos"
-              parent="menu_logitrans_root"
-              action="action_logitrans_mantenimiento"/>
+    <!-- MENÚ: pasa a submenu -->
+   
 </odoo>

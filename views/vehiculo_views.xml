@@ -119,7 +119,4 @@
         <field name="view_mode">kanban,tree,form</field>
     </record>
 
-    <!-- MENÚ -->
-    <menuitem id="menu_logitrans_root" name="LogiTrans"/>
-    <menuitem id="menu_logitrans_vehiculo" name="Vehículos" parent="menu_logitrans_root" action="action_logitrans_vehiculo"/>
 </odoo>

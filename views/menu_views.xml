@@ -1,12 +1,23 @@
 <odoo>
     <data>
-        <!-- Top menu item -->
-        <menuitem name="Logi Trans" id="main_logitrans_menu" groups="group_logitrans_manager"/>
-        <!-- menu categories -->
-        <menuitem name="Logi Trans" id="logitrans_menu" groups="group_logitrans_manager" parent="main_logitrans_menu"/>
-        <!-- actions -->
-        <menuitem name="Envios" id="envios_menu" parent="logitrans_menu" groups="group_logitrans_manager" action="envios_list_action"/>
-        <menuitem name="Rutas" id="rutas_menu" parent="logitrans_menu" groups="group_logitrans_manager" action="rutas_list_action"/>
-        <menuitem name="Ubicaciones" id="ubicacion_menu" parent="logitrans_menu" groups="group_logitrans_manager" action="ubicacion_list_action"/>
+
+        <!-- MENÚ RAÍZ (APP) -->
+        <menuitem id="main_logitrans_menu" name="LogiTrans" groups="group_logitrans_manager" sequence="10"/>
+
+        <!-- CATEGORÍAS -->
+        <menuitem id="logitrans_menu" name="Servicios" parent="main_logitrans_menu" groups="group_logitrans_manager" sequence="10"/>
+        <menuitem id="menu_logitrans_flota" name="Flota" parent="main_logitrans_menu" groups="group_logitrans_manager" sequence="20"/>
+
+        <!-- SERVICIOS -->
+        <menuitem id="envios_menu" name="Envíos" parent="logitrans_menu" action="envios_list_action" groups="group_logitrans_manager" sequence="10"/>
+        <menuitem id="rutas_menu" name="Rutas" parent="logitrans_menu" action="rutas_list_action" groups="group_logitrans_manager" sequence="20"/>
+        <menuitem id="ubicacion_menu" name="Ubicaciones" parent="logitrans_menu" action="ubicacion_list_action" groups="group_logitrans_manager" sequence="30"/>
+
+        <!-- FLOTA -->
+        <menuitem id="menu_logitrans_vehiculo" name="Vehículos" parent="menu_logitrans_flota" action="action_logitrans_vehiculo" groups="group_logitrans_manager" sequence="10"/>
+        <menuitem id="menu_logitrans_mantenimiento" name="Mantenimiento" parent="menu_logitrans_flota" action="action_logitrans_mantenimiento" groups="group_logitrans_manager" sequence="20"/>
+        <menuitem id="menu_logitrans_tipo_carga" name="Tipos de carga" parent="menu_logitrans_flota" action="action_logitrans_tipo_carga" groups="group_logitrans_manager" sequence="30"/>
+        <menuitem id="menu_logitrans_autorizaciones" name="Autorizaciones" parent="menu_logitrans_flota" action="action_logitrans_vehiculo_tipo_carga" groups="group_logitrans_manager" sequence="40"/>
+
     </data>
 </odoo>

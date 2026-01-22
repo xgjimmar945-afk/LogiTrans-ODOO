@@ -74,8 +74,5 @@
     </record>
 
     <!-- MENÚ -->
-    <menuitem id="menu_logitrans_tipo_carga"
-              name="Tipos de carga"
-              parent="menu_logitrans_root"
-              action="action_logitrans_tipo_carga"/>
+
 </odoo>
