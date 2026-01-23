@@ -1,6 +1,0 @@
-<odoo>
-    <data>
-        <!-- Definición del informe PDF de envíos -->
-        <report id="logitrans_report_envios_action" string="Informe de Envíos" model="logitrans.envios" report_type="qweb-pdf" name="logitrans.report_envios_template" file="logitrans.report_envios_template" paperformat="base.paperformat_euro" />
-    </data>
-</odoo>

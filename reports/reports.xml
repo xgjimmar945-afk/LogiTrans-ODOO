@@ -48,4 +48,13 @@
     <field name="paperformat_id" ref="paperformat_logitrans_a4"/>
   </record>
 
+  <!-- Reporte: Envío-->
+  <report id="logitrans_report_envios_action"
+   string="Informe de Envíos"
+   model="logitrans.envios"
+   report_type="qweb-pdf"
+   name="logitrans.report_envios_template"
+   file="logitrans.report_envios_template"
+   paperformat="base.paperformat_euro" />
+
 </odoo>

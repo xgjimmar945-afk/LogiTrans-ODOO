@@ -26,10 +26,15 @@
                 <field name="rutas_ids" widget="many2many"/>
               </group>
             </page>
+            <page name="datos_vehiculo" string="Datos del vehiculo">
+              <group>
+                <field name="vehiculo_id" widget="many2one"/>
+              </group>
+            </page>
           </notebook>
           <group>
             <field name="state" widget="statusbar" />
-          </group>  
+          </group>
           <newline>
             <button name="btn_borrarRutas" string="Borrar rutas" type="object" class="btn-primary"/>
           </newline>
@@ -47,6 +52,7 @@
         <field name="fecha_creacion" />
         <field name="peso_kg" />
         <field name="rutas_ids" />
+        <field name="vehiculo_id" />
         <field name="state" widget="statusbar" />
       </tree>
     </field>
@@ -57,38 +63,52 @@
     <field name="model">logitrans.envios</field>
     <field name="arch" type="xml">
       <kanban class="o_kanban_small_column">
-        <!-- Campos que el kanban necesita cargar -->
         <field name="nombre"/>
         <field name="fecha_creacion"/>
         <field name="peso_kg"/>
         <field name="rutas_ids"/>
+        <field name="vehiculo_id"/>
 
         <templates>
           <t t-name="kanban-box">
             <div class="oe_kanban_global_click o_kanban_card">
+
               <div class="o_kanban_card_header">
                 <strong>
                   <field name="nombre"/>
                 </strong>
               </div>
-
-              <div class="o_kanban_card_content">
-                <div>
-                  <strong>Fecha de creacion:</strong>
-                  <field name="fecha_creacion"/>
-                </div>
-
-                <div>
-                  <strong>Peso en kg:</strong>
-                  <field name="peso_kg"/>
-                </div>
-
-                <div>
-                  <strong>Rutas:</strong>
-                  <field name="rutas_ids" widget="many2many_tags"/>
+              <hr/>
+              <div>
+                <div class="o_kanban_card_content">
+                  <div>
+                    <strong>Fecha de creacion:</strong>
+                    <field name="fecha_creacion"/>
+                  </div>
+                  <hr/>
+                  <div>
+                    <strong>Peso en kg:</strong>
+                    <field name="peso_kg"/>
+                  </div>
+                  <hr/>
+                  <div>
+                    <strong>Rutas:</strong>
+                    <field name="rutas_ids" widget="many2many_tags"/>
+                  </div>
+                  <hr/>
+                  <div>
+                    <strong>Vehiculo:</strong>
+                    <field name="vehiculo_id" widget="many2one"/>
+                  </div>
+                  <hr/>
                 </div>
               </div>
-
+              <div class="o_kanban_card_footer">
+                <div>
+                  <strong>Estado:</strong>
+                  <field name="state" widget="statusbar"/>
+                </div>
+              </div>
             </div>
           </t>
         </templates>
@@ -130,6 +150,7 @@
         <field name="fecha_creacion"/>
         <field name="peso_kg"/>
         <field name="rutas_ids"/>
+        <field name="vehiculo_id"/>
       </calendar>
     </field>
   </record>

@@ -48,11 +48,9 @@ class Envios(models.Model):
         ("envios_nombre_unique", "UNIQUE (nombre)", "El nombre debe ser único")
     ]
 
-    """ tipos_cargas_id = fields.Many2many(
-        "logi_trans.tipos_cargas", string="Tipos de carga"
-    )
+    vehiculo_id = fields.Many2one("logitrans.vehiculo", string="Vehiculo que se encarga del envío")
 
-    vehiculo_id = fields.Many2one("logi_trans.vehiculos", string="Vehiculo")
+    """ 
     conductor_id = fields.Many2one("logi_trans.conductores", string="Conductor") """
 
     @api.constrains("peso_kg")
