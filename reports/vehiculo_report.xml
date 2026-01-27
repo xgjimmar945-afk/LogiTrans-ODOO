@@ -1,0 +1,131 @@
+<odoo>
+  <template id="report_vehiculo_document">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <t t-call="web.external_layout">
+
+          <!-- Estilos locales del informe (no afecta a todo Odoo) -->
+          <style>
+            
+            /* Estética del informe */
+            .lt_title { margin-bottom: 12px; }
+            .lt_label { font-weight: 700; color: #2e3a8c; width: 35%; }
+            .lt_section { margin-top: 16px; color: #2e3a8c; }
+
+
+            /* Tablas */
+            .lt_table td { padding: 4px 0; vertical-align: top; }
+            .lt_mant th, .lt_mant td { padding: 6px; }
+            .lt_right { text-align: right; }
+          </style>
+
+          <div class="page">
+
+            <h2 class="lt_title">Ficha de vehículo</h2>
+
+            <!-- Bloque superior: datos + foto -->
+            <table style="width:100%;">
+              <tr>
+                <td style="width:60%; vertical-align: top; padding-right: 12px;">
+                  <table class="lt_table" style="width:100%;">
+                    <tr>
+                      <td class="lt_label">Matrícula</td>
+                      <td><t t-esc="o.matricula or ''"/></td>
+                    </tr>
+                    <tr>
+                      <td class="lt_label">Marca</td>
+                      <td><t t-esc="o.marca or ''"/></td>
+                    </tr>
+                    <tr>
+                      <td class="lt_label">Modelo</td>
+                      <td><t t-esc="o.modelo or ''"/></td>
+                    </tr>
+                    <tr>
+                      <td class="lt_label">Capacidad (kg)</td>
+                      <td><t t-esc="o.capacidad_kg or 0.0"/></td>
+                    </tr>
+                    <tr>
+                      <td class="lt_label">Año de fabricación</td>
+                      <td><t t-esc="o.anio_fabricacion or ''"/></td>
+                    </tr>
+                    <tr>
+                      <td class="lt_label">Fecha matriculación</td>
+                      <td><t t-esc="o.fecha_matriculacion or ''"/></td>
+                    </tr>
+                    <tr>
+                      <td class="lt_label">Antigüedad (años)</td>
+                      <td><t t-esc="o.antiguedad or 0"/></td>
+                    </tr>
+                    <tr>
+                      <td class="lt_label">Activo</td>
+                      <td><t t-esc="o.activo"/></td>
+                    </tr>
+                  </table>
+                </td>
+
+                <td style="
+                    width:40%;
+                    vertical-align: middle;
+                    text-align: center;
+                    padding-top: 10px;
+                    padding-right: 10px;
+                ">
+                  <div style="
+                      width:240px;
+                      height:240px;
+                      border:3px solid #3bb54a;
+                      border-radius:22px;
+                      display:flex;
+                      align-items:center;
+                      justify-content:center;
+                      color:#3bb54a;
+                      font-size:14px;
+                      font-weight:600;
+                      box-sizing:border-box;
+                    ">
+                    image
+                  </div>
+                </td>
+
+              </tr>
+            </table>
+
+            <!-- Tabla de mantenimientos -->
+            <t t-if="o.mantenimiento_ids">
+              <h4 class="lt_section">Mantenimientos</h4>
+
+              <table class="table table-sm lt_mant" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th class="lt_right">Coste (€)</th>
+                    <th>Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-foreach="o.mantenimiento_ids" t-as="m">
+                    <tr>
+                      <td><t t-esc="m.fecha or ''"/></td>
+                      <td><t t-esc="m.tipo or ''"/></td>
+                      <td><t t-esc="m.state or ''"/></td>
+                      <td class="lt_right"><t t-esc="('%.2f' % (m.coste or 0.0))"/></td>
+                      <td><t t-esc="m.descripcion or ''"/></td>
+                    </tr>
+                  </t>
+                </tbody>
+              </table>
+            </t>
+
+            <t t-if="not o.mantenimiento_ids">
+              <h4 class="lt_section">Mantenimientos</h4>
+              <p style="color:#888;">No hay mantenimientos registrados para este vehículo.</p>
+            </t>
+
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>

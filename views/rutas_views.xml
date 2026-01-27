@@ -1,0 +1,123 @@
+<odoo>
+  <record id="logitrans_rutas_form_view" model="ir.ui.view">
+    <field name="name">logitrans.rutas.form</field>
+    <field name="model">logitrans.rutas</field>
+    <field name="arch" type="xml">
+      <form string="Rutas">
+        <header>
+          <button name="btn_borrarUbicacionOrigen" string="Borrar origen" icon="fa-trash" type="object" class="btn-primary"/>
+          <button name="btn_borrarUbicacionDestino" string="Borrar destino" icon="fa-trash" type="object" class="btn-primary"/>
+        </header>
+        <sheet layout="auto">
+          <group>
+            <group>
+              <field name="tipo_ruta" />
+              <field name="distancia_estimada" />
+            </group>
+            <group>
+              <field name="origen_ubicacion_id" />
+              <field name="destino_ubicacion_id" />
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="logitrans_rutas_tree_view" model="ir.ui.view">
+    <field name="name">logitrans.rutas.tree</field>
+    <field name="model">logitrans.rutas</field>
+    <field name="arch" type="xml">
+      <tree string="Rutas">
+        <field name="tipo_ruta" />
+        <field name="distancia_estimada" />
+        <field name="origen_ubicacion_id" />
+        <field name="destino_ubicacion_id" />
+      </tree>
+    </field>
+  </record>`
+
+  <record id="logitrans_rutas_kanban_view" model="ir.ui.view">
+    <field name="name">logitrans.rutas.kanban</field>
+    <field name="model">logitrans.rutas</field>
+    <field name="arch" type="xml">
+      <kanban class="o_kanban_small_column">
+        <!-- Campos que el kanban necesita cargar -->
+        <field name="tipo_ruta"/>
+        <field name="distancia_estimada"/>
+        <field name="origen_ubicacion_id"/>
+        <field name="destino_ubicacion_id"/>
+
+        <templates>
+          <t t-name="kanban-box">
+            <div class="oe_kanban_global_click o_kanban_card">
+              <div class="o_kanban_card_header">
+                <strong>
+                  <field name="tipo_ruta"/>
+                </strong>
+              </div>
+
+              <div class="o_kanban_card_content">
+                <div>
+                  <strong>Distancia estimada:</strong>
+                  <field name="distancia_estimada"/>
+                </div>
+
+                <div>
+                  <strong>Origen:</strong>
+                  <field name="origen_ubicacion_id"/>
+                </div>
+
+                <div>
+                  <strong>Destino:</strong>
+                  <field name="destino_ubicacion_id"/>
+                </div>
+
+                <div class="o_kanban_card_footer">
+                  <strong>Envios:</strong>
+                  <field name="envios_ids" widget="many2many_tags"/>
+                </div>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <record id="logitrans_rutas_search_view" model="ir.ui.view">
+    <field name="name">logitrans.rutas.search</field>
+    <field name="model">logitrans.rutas</field>
+    <field name="arch" type="xml">
+      <search string="Búsqueda de Rutas">
+
+        <field name="tipo_ruta" />
+        <field name="distancia_estimada" />
+        <field name="origen_ubicacion_id" />
+        <field name="destino_ubicacion_id" />
+
+        <filter name="distancia_sup_100" string="Distancia > 100km" domain="[('distancia_estimada','&gt;',100)]" />
+
+        <separator/>
+
+        <group expand="0" string="Agrupar por">
+          <filter name="group_by_tipo_ruta" string="Por Tipo de Ruta" context="{'group_by':'tipo_ruta'}"/>
+
+          <filter name="group_by_origen" string="Por Origen" context="{'group_by':'origen_ubicacion_id'}"/>
+
+          <filter name="group_by_destino" string="Por Destino" context="{'group_by':'destino_ubicacion_id'}"/>
+        </group>
+
+      </search>
+    </field>
+  </record>
+
+  <record id="rutas_list_action" model="ir.actions.act_window">
+    <field name="name">Rutas</field>
+    <field name="res_model">logitrans.rutas</field>
+    <field name="view_mode">tree,form,kanban</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Create the first ruta</p>
+    </field>
+  </record>
+</odoo>

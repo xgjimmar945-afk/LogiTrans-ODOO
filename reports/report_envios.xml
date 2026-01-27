@@ -1,0 +1,114 @@
+<odoo>
+    <data>
+        <template id="report_envios_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="row" style="font-size: 24px; margin-bottom: 20px;">
+                                <div class="col-12">
+                                    <span style="font-weight: bold; text-decoration: underline; ">Envio:</span>
+                                    <span style="color: #999999;" t-field="o.nombre" />
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <table class="table table-sm table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 20%;">
+                                                    <strong>Estado:</strong>
+                                                </td>
+                                                <td>
+                                                    <span t-field="o.state"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Fecha Creacion:</strong>
+                                                </td>
+                                                <td>
+                                                    <span t-field="o.fecha_creacion"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Peso Total:</strong>
+                                                </td>
+                                                <td>
+                                                    <span t-field="o.peso_kg"/>
+ Kg</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Fecha Registro:</strong>
+                                                </td>
+                                                <td>
+                                                    <span t-field="o.fecha_actual"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div t-if="o.rutas_ids" class="row" style="margin-top: 40px; font-weight: bold; font-size: 19px; margin-bottom: 10px;">
+                                <div class="col-12">
+                                    Rutas asignadas del envio <span t-field="o.nombre" />
+                                </div>
+                            </div>
+
+                            <div t-if="o.rutas_ids" class="row">
+                                <div class="col-12">
+                                    <table class="table table-bordered table-sm">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th>Tipo de Ruta</th>
+                                                <th>Origen</th>
+                                                <th>Destino</th>
+                                                <th class="text-right">Distancia (Km)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="o.rutas_ids" t-as="ruta">
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <span t-esc="ruta_index + 1"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="ruta.tipo_ruta" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="ruta.origen_ubicacion_id" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="ruta.destino_ubicacion_id" />
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-field="ruta.distancia_estimada" />
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row mt-5">
+                                <div class="col-12" style="text-align: center;">
+                                    <hr/>
+                                    <p class="text-muted" style="text-align: center; width: 100%;">
+                                        <strong>LogiTrans</strong> - Sistema de Gestión Logística<br/>
+                                        Documento generado automáticamente
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+
+  <!-- Paperformat A4 para LogiTrans -->
+  <record id="paperformat_logitrans_a4" model="report.paperformat">
+    <field name="name">LogiTrans A4</field>
+    <field name="default" eval="False"/>
+    <field name="format">A4</field>
+    <field name="orientation">Portrait</field>
+
+    <!-- márgenes en mm -->
+    <field name="margin_top">35</field>
+    <field name="margin_bottom">20</field>
+    <field name="margin_left">10</field>
+    <field name="margin_right">10</field>
+
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">10</field>
+    <field name="dpi">90</field>
+  </record>
+
+  <!-- Reporte: Mantenimiento -->
+  <record id="action_report_mantenimiento" model="ir.actions.report">
+    <field name="name">Informe de mantenimiento</field>
+    <field name="model">logitrans.mantenimiento</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">LogiTrans-ODOO.report_mantenimiento_document</field>
+    <field name="report_file">LogiTrans-ODOO.report_mantenimiento_document</field>
+
+    <!-- que aparezca en Imprimir -->
+    <field name="binding_model_id" ref="model_logitrans_mantenimiento"/>
+    <field name="binding_type">report</field>
+
+    <!-- A4 -->
+    <field name="paperformat_id" ref="paperformat_logitrans_a4"/>
+  </record>
+
+  <!-- Reporte: Vehículo -->
+  <record id="action_report_vehiculo" model="ir.actions.report">
+    <field name="name">Informe de vehículo</field>
+    <field name="model">logitrans.vehiculo</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">LogiTrans-ODOO.report_vehiculo_document</field>
+    <field name="report_file">LogiTrans-ODOO.report_vehiculo_document</field>
+
+    <field name="binding_model_id" ref="model_logitrans_vehiculo"/>
+    <field name="binding_type">report</field>
+
+    <field name="paperformat_id" ref="paperformat_logitrans_a4"/>
+  </record>
+
+  <!-- Reporte: Envío-->
+  <report id="logitrans_report_envios_action"
+   string="Informe de Envíos"
+   model="logitrans.envios"
+   report_type="qweb-pdf"
+   name="logitrans.report_envios_template"
+   file="logitrans.report_envios_template"
+   paperformat="base.paperformat_euro" />
+
+</odoo>

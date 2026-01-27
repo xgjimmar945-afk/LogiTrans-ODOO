@@ -1,0 +1,166 @@
+<odoo>
+  <record id="logitrans_envios_form_view" model="ir.ui.view">
+    <field name="name">logitrans.envios.form</field>
+    <field name="model">logitrans.envios</field>
+    <field name="arch" type="xml">
+      <form string="Envios">
+        <header>
+          <button name="btn_submit_to_fabrica" string="En Fabrica" type="object" class="oe_highlight" />
+          <button name="btn_submit_to_camino" string="En Camino" type="object" class="oe_highlight" />
+          <button name="btn_submit_to_entregado" string="Entregado" type="object" class="oe_highlight" />
+          <button name="btn_generar_informe" string="Generar informe" type="object" class="oe_highlight" />
+        </header>
+        <sheet layout="auto">
+          <group>
+            <field name="nombre" />
+          </group>
+          <notebook>
+            <page name="datos_envio" string="Datos del envio">
+              <group>
+                <field name="fecha_creacion" />
+                <field name="peso_kg" />
+              </group>
+            </page>
+            <page name="datos_rutas" string="Datos de las rutas">
+              <group>
+                <field name="rutas_ids" widget="many2many"/>
+              </group>
+            </page>
+            <page name="datos_vehiculo" string="Datos del vehiculo">
+              <group>
+                <field name="vehiculo_id" widget="many2one"/>
+              </group>
+            </page>
+          </notebook>
+          <group>
+            <field name="state" widget="statusbar" />
+          </group>
+          <newline>
+            <button name="btn_borrarRutas" string="Borrar rutas" type="object" class="btn-primary"/>
+          </newline>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="logitrans_envios_tree_view" model="ir.ui.view">
+    <field name="name">logitrans.envios.tree</field>
+    <field name="model">logitrans.envios</field>
+    <field name="arch" type="xml">
+      <tree string="Envios">
+        <field name="nombre" />
+        <field name="fecha_creacion" />
+        <field name="peso_kg" />
+        <field name="rutas_ids" />
+        <field name="vehiculo_id" />
+        <field name="state" widget="statusbar" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="logitrans_envios_kanban_view" model="ir.ui.view">
+    <field name="name">logitrans.envios.kanban</field>
+    <field name="model">logitrans.envios</field>
+    <field name="arch" type="xml">
+      <kanban class="o_kanban_small_column">
+        <field name="nombre"/>
+        <field name="fecha_creacion"/>
+        <field name="peso_kg"/>
+        <field name="rutas_ids"/>
+        <field name="vehiculo_id"/>
+
+        <templates>
+          <t t-name="kanban-box">
+            <div class="oe_kanban_global_click o_kanban_card">
+
+              <div class="o_kanban_card_header">
+                <strong>
+                  <field name="nombre"/>
+                </strong>
+              </div>
+              <hr/>
+              <div>
+                <div class="o_kanban_card_content">
+                  <div>
+                    <strong>Fecha de creacion:</strong>
+                    <field name="fecha_creacion"/>
+                  </div>
+                  <hr/>
+                  <div>
+                    <strong>Peso en kg:</strong>
+                    <field name="peso_kg"/>
+                  </div>
+                  <hr/>
+                  <div>
+                    <strong>Rutas:</strong>
+                    <field name="rutas_ids" widget="many2many_tags"/>
+                  </div>
+                  <hr/>
+                  <div>
+                    <strong>Vehiculo:</strong>
+                    <field name="vehiculo_id" widget="many2one"/>
+                  </div>
+                  <hr/>
+                </div>
+              </div>
+              <div class="o_kanban_card_footer">
+                <div>
+                  <strong>Estado:</strong>
+                  <field name="state" widget="statusbar"/>
+                </div>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <record id="logitrans_envios_search_view" model="ir.ui.view">
+    <field name="name">logitrans.envios.search</field>
+    <field name="model">logitrans.envios</field>
+    <field name="arch" type="xml">
+      <search string="Búsqueda de Envíos">
+
+        <field name="nombre" />
+        <field name="fecha_creacion" />
+
+        <filter name="peso_sup_10" string="Peso > 10kg" domain="[('peso_kg','&gt;',10)]" />
+
+        <separator/>
+
+        <filter name="today" string="Hoy" domain="[('fecha_creacion', '=', context_today().strftime('%Y-%m-%d'))]"/>
+
+        <group expand="0" string="Agrupar por">
+          <filter name="group_by_fecha" string="Por Fecha" context="{'group_by':'fecha_creacion:day'}"/>
+
+          <filter name="group_by_peso_type" string="Por Peso" context="{'group_by':'peso_kg'}"/>
+        </group>
+
+      </search>
+    </field>
+  </record>
+
+  <record id="logitrans_envios_calendar_view" model="ir.ui.view">
+    <field name="name">logitrans.envios.calendar</field>
+    <field name="model">logitrans.envios</field>
+    <field name="arch" type="xml">
+      <calendar string="Envios" color="nombre" date_start="fecha_actual" mode="month">
+        <field name="nombre"/>
+        <field name="fecha_creacion"/>
+        <field name="peso_kg"/>
+        <field name="rutas_ids"/>
+        <field name="vehiculo_id"/>
+      </calendar>
+    </field>
+  </record>
+
+  <record id="envios_list_action" model="ir.actions.act_window">
+    <field name="name">Envios</field>
+    <field name="res_model">logitrans.envios</field>
+    <field name="view_mode">tree,form,calendar,kanban</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Create the first envio</p>
+    </field>
+  </record>
+</odoo>
