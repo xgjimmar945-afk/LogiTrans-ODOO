@@ -27,7 +27,7 @@
         'views/conductor.xml',
         'views/administrativo.xml',
         'views/persona.xml',
-        'views/informes.xml',
+        'reports/informes.xml',
         'views/menu_views.xml',
     ],
     # only loaded in demonstration mode
