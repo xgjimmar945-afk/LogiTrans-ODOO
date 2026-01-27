@@ -1,808 +1,815 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
-    <data>
-
-        <!-- Datos de demo de ubicaciones-->
-        <record id="Ubicacion0" model="logitrans.ubicacion">
-            <field name="nombre">Ubicacion 0</field>
-            <field name="direccion">Direccion 0</field>
-            <field name="provincia" ref="base.state_es_se"/>
-            <field name="ciudad">Dos Hermanas</field>
-            <field name="longitud">37.2744</field>
-            <field name="latitud">-5.9249</field>
-        </record>
-        <record id="Ubicacion1" model="logitrans.ubicacion">
-            <field name="nombre">Ubicacion 1</field>
-            <field name="direccion">Direccion 1</field>
-            <field name="provincia" ref="base.state_es_se"/>
-            <field name="ciudad">Sevilla</field>
-            <field name="longitud">37.3891</field>
-            <field name="latitud">-5.9845</field>
-        </record>
-        <record id="Ubicacion2" model="logitrans.ubicacion">
-            <field name="nombre">Ubicacion 2</field>
-            <field name="direccion">Direccion 2</field>
-            <field name="provincia" ref="base.state_es_ca"/>
-            <field name="ciudad">Jerez de la Frontera</field>
-            <field name="longitud">36.6867</field>
-            <field name="latitud">-6.1344</field>
-        </record>
-
-        <!-- Datos de demo de rutas-->
-        <record id="Ruta0" model="logitrans.rutas">
-            <field name="tipo_ruta">Urbana</field>
-            <field name="distancia_estimada">20</field>
-            <field name="destino_ubicacion_id" ref="Ubicacion0"/>
-            <field name="origen_ubicacion_id" ref="Ubicacion1"/>
-        </record>
-        <record id="Ruta1" model="logitrans.rutas">
-            <field name="tipo_ruta">Nacional</field>
-            <field name="distancia_estimada">500</field>
-            <field name="destino_ubicacion_id" ref="Ubicacion0"/>
-            <field name="origen_ubicacion_id" ref="Ubicacion2"/>
-        </record>
-        <record id="Ruta2" model="logitrans.rutas">
-            <field name="tipo_ruta">Provincial</field>
-            <field name="distancia_estimada">100</field>
-            <field name="destino_ubicacion_id" ref="Ubicacion2"/>
-            <field name="origen_ubicacion_id" ref="Ubicacion1"/>
-        </record>
-
-        <!-- Datos de demo de envios-->
-        <record id="Envio0" model="logitrans.envios">
-            <field name="nombre">Envio 0</field>
-            <field name="fecha_creacion">2025-12-12</field>
-            <field name="peso_kg">20</field>
-            <field name="rutas_ids" eval="[(6, 0, [ref('Ruta0')])]"/>
-        </record>
-        <record id="Envio1" model="logitrans.envios">
-            <field name="nombre">Envio 1</field>
-            <field name="fecha_creacion">2026-01-01</field>
-            <field name="peso_kg">20</field>
-            <field name="rutas_ids" eval="[(6, 0, [ref('Ruta1')])]"/>
-        </record>
-        <record id="Envio2" model="logitrans.envios">
-            <field name="nombre">Envio 2</field>
-            <field name="fecha_creacion">2026-01-15</field>
-            <field name="peso_kg">20</field>
-            <field name="rutas_ids" eval="[(6, 0, [ref('Ruta2')])]"/>
-        </record>
-
-        <!-- ===================== -->
-        <!-- VEHICULOS (demo) -->
-        <!-- ===================== -->
-
-        <record id="demo_vehiculo_1234ABC" model="logitrans.vehiculo">
-          <field name="matricula">1234ABC</field>
-          <field name="marca">ACME</field>
-          <field name="modelo">Patito</field>
-          <field name="anio_fabricacion">2010</field>
-          <field name="fecha_matriculacion">2011-01-03</field>
-          <field name="capacidad_kg">2500.0</field>
-          <field name="activo">True</field>
-        </record>
-
-        <record id="demo_vehiculo_4821BCR" model="logitrans.vehiculo">
-          <field name="matricula">4821BCR</field>
-          <field name="marca">Renault</field>
-          <field name="modelo">Kangoo</field>
-          <field name="anio_fabricacion">2020</field>
-          <field name="fecha_matriculacion">2021-03-15</field>
-          <field name="capacidad_kg">650.0</field>
-          <field name="activo">True</field>
-        </record>
-
-        <record id="demo_vehiculo_7395DGT" model="logitrans.vehiculo">
-          <field name="matricula">7395DGT</field>
-          <field name="marca">Citroën</field>
-          <field name="modelo">Bingo</field>
-          <field name="anio_fabricacion">2019</field>
-          <field name="fecha_matriculacion">2019-05-10</field>
-          <field name="capacidad_kg">800.0</field>
-          <field name="activo">True</field>
-        </record>
-
-        <record id="demo_vehiculo_1560KLM" model="logitrans.vehiculo">
-          <field name="matricula">1560KLM</field>
-          <field name="marca">Volkswagen</field>
-          <field name="modelo">Caddy</field>
-          <field name="anio_fabricacion">2021</field>
-          <field name="fecha_matriculacion">2022-02-02</field>
-          <field name="capacidad_kg">900.0</field>
-          <field name="activo">True</field>
-        </record>
-
-        <record id="demo_vehiculo_9043PRS" model="logitrans.vehiculo">
-          <field name="matricula">9043PRS</field>
-          <field name="marca">Ford</field>
-          <field name="modelo">Transit</field>
-          <field name="anio_fabricacion">2018</field>
-          <field name="fecha_matriculacion">2018-09-11</field>
-          <field name="capacidad_kg">1400.0</field>
-          <field name="activo">True</field>
-        </record>
-
-        <record id="demo_vehiculo_2687TRV" model="logitrans.vehiculo">
-          <field name="matricula">2687TRV</field>
-          <field name="marca">Mercedes</field>
-          <field name="modelo">Sprinter</field>
-          <field name="anio_fabricacion">2020</field>
-          <field name="fecha_matriculacion">2021-01-20</field>
-          <field name="capacidad_kg">1700.0</field>
-          <field name="activo">True</field>
-        </record>
-
-        <record id="demo_vehiculo_6112GHR" model="logitrans.vehiculo">
-          <field name="matricula">6112GHR</field>
-          <field name="marca">Iveco</field>
-          <field name="modelo">Daily</field>
-          <field name="anio_fabricacion">2017</field>
-          <field name="fecha_matriculacion">2017-06-01</field>
-          <field name="capacidad_kg">1600.0</field>
-          <field name="activo">True</field>
-        </record>
-
-        <record id="demo_vehiculo_8470MNP" model="logitrans.vehiculo">
-          <field name="matricula">8470MNP</field>
-          <field name="marca">Peugeot</field>
-          <field name="modelo">Partner</field>
-          <field name="anio_fabricacion">2022</field>
-          <field name="fecha_matriculacion">2023-04-18</field>
-          <field name="capacidad_kg">700.0</field>
-          <field name="activo">True</field>
-        </record>
-
-        
-        <!-- TIPOS DE CARGA (demo) -->
-        <record id="demo_carga_estandar" model="logitrans.tipo_carga">
-          <field name="name">Estándar</field>
-          <field name="descripcion">Envíos de tamaño y peso moderado sin requisitos especiales de transporte.</field>
-          <field name="vigente">True</field>
-        </record>
-
-        <record id="demo_carga_perecedera" model="logitrans.tipo_carga">
-          <field name="name">Perecedera</field>
-          <field name="descripcion">Productos con caducidad o sensibles al tiempo, como alimentos frescos.</field>
-          <field name="vigente">True</field>
-        </record>
-
-        <record id="demo_carga_refrigerada" model="logitrans.tipo_carga">
-          <field name="name">Refrigerada</field>
-          <field name="descripcion">Carga que requiere control de temperatura durante el transporte.</field>
-          <field name="vigente">True</field>
-        </record>
-
-        <record id="demo_carga_fragil" model="logitrans.tipo_carga">
-          <field name="name">Frágil</field>
-          <field name="descripcion">Mercancía que necesita manipulación cuidadosa para evitar daños.</field>
-          <field name="vigente">True</field>
-        </record>
-
-        <record id="demo_carga_peligrosa" model="logitrans.tipo_carga">
-          <field name="name">Peligrosa</field>
-          <field name="descripcion">Sustancias o materiales que requieren autorización y medidas de seguridad especiales.</field>
-          <field name="vigente">True</field>
-        </record>
-
-        <record id="demo_carga_voluminosa" model="logitrans.tipo_carga">
-          <field name="name">Voluminosa</field>
-          <field name="descripcion">Carga de gran tamaño que ocupa mucho espacio aunque no sea pesada.</field>
-          <field name="vigente">True</field>
-        </record>
-
-        <record id="demo_carga_electronica" model="logitrans.tipo_carga">
-          <field name="name">Electrónica</field>
-          <field name="descripcion">Equipos electrónicos sensibles a golpes, humedad o descargas.</field>
-          <field name="vigente">True</field>
-        </record>
-
-        <record id="demo_carga_documentacion" model="logitrans.tipo_carga">
-          <field name="name">Documentación</field>
-          <field name="descripcion">Sobres y documentos que requieren entrega rápida y segura.</field>
-          <field name="vigente">True</field>
-        </record>
-
-        
-        <!-- AUTORIZACIONES (demo) -->
-        
-        <!-- 4821BCR -->
-        <record id="demo_aut_01" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
-          <field name="tipo_carga_id" ref="demo_carga_refrigerada"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-02-17</field>
-          <field name="limite_kg">200.0</field>
-          <field name="observaciones">Control temperatura. Solo reparto urbano.</field>
-        </record>
-
-        <record id="demo_aut_02" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
-          <field name="tipo_carga_id" ref="demo_carga_perecedera"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-02-17</field>
-          <field name="limite_kg">250.0</field>
-          <field name="observaciones">Entrega rápida. Prioridad ruta corta.</field>
-        </record>
-
-        <!-- 7395DGT -->
-        <record id="demo_aut_03" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
-          <field name="tipo_carga_id" ref="demo_carga_estandar"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">800.0</field>
-          <field name="observaciones">Paquetería general.</field>
-        </record>
-
-        <record id="demo_aut_04" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
-          <field name="tipo_carga_id" ref="demo_carga_documentacion"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">50.0</field>
-          <field name="observaciones">Sobres/documentos. Compartimento separado.</field>
-        </record>
-
-        <record id="demo_aut_05" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
-          <field name="tipo_carga_id" ref="demo_carga_electronica"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">200.0</field>
-          <field name="observaciones">Requiere embalaje protegido.</field>
-        </record>
-
-        <!-- 1560KLM -->
-        <record id="demo_aut_06" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
-          <field name="tipo_carga_id" ref="demo_carga_fragil"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">150.0</field>
-          <field name="observaciones">Manipulación cuidadosa. Anclajes.</field>
-        </record>
-
-        <record id="demo_aut_07" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
-          <field name="tipo_carga_id" ref="demo_carga_electronica"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">200.0</field>
-          <field name="observaciones">Anti-golpes. Evitar humedad.</field>
-        </record>
-
-        <record id="demo_aut_08" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
-          <field name="tipo_carga_id" ref="demo_carga_documentacion"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">50.0</field>
-          <field name="observaciones">Entrega prioritaria.</field>
-        </record>
-
-        <!-- 9043PRS -->
-        <record id="demo_aut_09" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
-          <field name="tipo_carga_id" ref="demo_carga_voluminosa"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">1200.0</field>
-          <field name="observaciones">Cargas grandes, sin frío.</field>
-        </record>
-
-        <record id="demo_aut_10" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
-          <field name="tipo_carga_id" ref="demo_carga_estandar"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">1400.0</field>
-          <field name="observaciones">Paquetería grande.</field>
-        </record>
-
-        <!-- 2687TRV -->
-        <record id="demo_aut_11" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
-          <field name="tipo_carga_id" ref="demo_carga_estandar"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">1700.0</field>
-          <field name="observaciones">Rutas interurbanas.</field>
-        </record>
-
-        <record id="demo_aut_12" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
-          <field name="tipo_carga_id" ref="demo_carga_voluminosa"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">1500.0</field>
-          <field name="observaciones">Carga grande por volumen.</field>
-        </record>
-
-        <record id="demo_aut_13" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
-          <field name="tipo_carga_id" ref="demo_carga_fragil"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">200.0</field>
-          <field name="observaciones">Zona de carga asegurada.</field>
-        </record>
-
-        <record id="demo_aut_14" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
-          <field name="tipo_carga_id" ref="demo_carga_electronica"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-07-17</field>
-          <field name="limite_kg">300.0</field>
-          <field name="observaciones">Carga sensible.</field>
-        </record>
-
-        <!-- 6112GHR -->
-        <record id="demo_aut_15" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_6112GHR"/>
-          <field name="tipo_carga_id" ref="demo_carga_peligrosa"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-04-17</field>
-          <field name="limite_kg">200.0</field>
-          <field name="observaciones">Permiso especial. Protocolo seguridad.</field>
-        </record>
-
-        <!-- 8470MNP -->
-        <record id="demo_aut_16" model="logitrans.vehiculo_tipo_carga">
-          <field name="vehiculo_id" ref="demo_vehiculo_8470MNP"/>
-          <field name="tipo_carga_id" ref="demo_carga_refrigerada"/>
-          <field name="vigente">True</field>
-          <field name="fecha_autorizacion">2026-01-17</field>
-          <field name="proxima_renovacion">2026-02-17</field>
-          <field name="limite_kg">180.0</field>
-          <field name="observaciones">Última milla frío.</field>
-        </record>
-          <!-- ===================== -->
-        <!-- MANTENIMIENTOS (demo) -->
-        <!-- ===================== -->
-
-        <record id="demo_mant_01" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
-          <field name="fecha">2026-01-05</field>
-          <field name="tipo">preventivo</field>
-          <field name="coste">35.0</field>
-          <field name="descripcion">Revisión general (aceite, niveles, luces).</field>
-          <field name="state">solicitud</field>
-        </record>
-
-        <record id="demo_mant_02" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
-          <field name="fecha">2026-01-07</field>
-          <field name="tipo">itv</field>
-          <field name="coste">45.0</field>
-          <field name="descripcion">ITV anual programada.</field>
-          <field name="state">programado</field>
-        </record>
-
-        <record id="demo_mant_03" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
-          <field name="fecha">2026-01-08</field>
-          <field name="tipo">reparacion</field>
-          <field name="coste">120.0</field>
-          <field name="descripcion">Sustitución de pastillas de freno.</field>
-          <field name="state">en_proceso</field>
-        </record>
-
-        <record id="demo_mant_04" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
-          <field name="fecha">2026-01-09</field>
-          <field name="tipo">estetico</field>
-          <field name="coste">60.0</field>
-          <field name="descripcion">Limpieza interior + pulido exterior.</field>
-          <field name="state">realizado</field>
-        </record>
-
-        <record id="demo_mant_05" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
-          <field name="fecha">2026-01-10</field>
-          <field name="tipo">reparacion</field>
-          <field name="coste">0.0</field>
-          <field name="descripcion">Diagnóstico inicial (sin coste).</field>
-          <field name="state">solicitud</field>
-        </record>
-
-        <record id="demo_mant_06" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_6112GHR"/>
-          <field name="fecha">2026-01-11</field>
-          <field name="tipo">preventivo</field>
-          <field name="coste">50.0</field>
-          <field name="descripcion">Cambio de filtros + revisión neumáticos.</field>
-          <field name="state">programado</field>
-        </record>
-
-        <record id="demo_mant_07" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_8470MNP"/>
-          <field name="fecha">2026-01-12</field>
-          <field name="tipo">itv</field>
-          <field name="coste">45.0</field>
-          <field name="descripcion">ITV (vehículo de última milla).</field>
-          <field name="state">en_proceso</field>
-        </record>
-
-        <record id="demo_mant_08" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_1234ABC"/>
-          <field name="fecha">2026-01-13</field>
-          <field name="tipo">preventivo</field>
-          <field name="coste">40.0</field>
-          <field name="descripcion">Revisión básica para puesta a punto.</field>
-          <field name="state">realizado</field>
-        </record>
-
-        <record id="demo_mant_09" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
-          <field name="fecha">2025-12-20</field>
-          <field name="tipo">reparacion</field>
-          <field name="coste">210.0</field>
-          <field name="descripcion">Reparación sistema de refrigeración.</field>
-          <field name="state">realizado</field>
-        </record>
-
-        <record id="demo_mant_10" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
-          <field name="fecha">2025-12-28</field>
-          <field name="tipo">estetico</field>
-          <field name="coste">30.0</field>
-          <field name="descripcion">Limpieza rápida (fin de año).</field>
-          <field name="state">cancelado</field>
-          <field name="observaciones">Cancelado por falta de disponibilidad en taller.</field>
-        </record>
-
-        <record id="demo_mant_11" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
-          <field name="fecha">2025-11-15</field>
-          <field name="tipo">preventivo</field>
-          <field name="coste">55.0</field>
-          <field name="descripcion">Revisión pre-invierno.</field>
-          <field name="state">realizado</field>
-        </record>
-
-        <record id="demo_mant_12" model="logitrans.mantenimiento">
-          <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
-          <field name="fecha">2025-11-30</field>
-          <field name="tipo">reparacion</field>
-          <field name="coste">180.0</field>
-          <field name="descripcion">Sustitución de batería.</field>
-          <field name="state">cancelado</field>
-          <field name="observaciones">Cancelado por pieza no disponible (batería).</field>
-        </record>
-
-        <!-- ===== PERSONAS (10 registros) ===== -->
-        
-        <record model="logitrans.persona" id="persona_001">
-            <field name="name">Juan García López</field>
-            <field name="dni">12345678A</field>
-            <field name="email">juan.garcia@logitrans.com</field>
-            <field name="phone">+34 912 345 678</field>
-            <field name="birthdate">1985-03-15</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_002">
-            <field name="name">María Rodríguez González</field>
-            <field name="dni">23456789B</field>
-            <field name="email">maria.rodriguez@logitrans.com</field>
-            <field name="phone">+34 923 456 789</field>
-            <field name="birthdate">1990-07-22</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_003">
-            <field name="name">Carlos Fernández Martín</field>
-            <field name="dni">34567890C</field>
-            <field name="email">carlos.fernandez@logitrans.com</field>
-            <field name="phone">+34 934 567 890</field>
-            <field name="birthdate">1988-11-08</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_004">
-            <field name="name">Ana López Ruiz</field>
-            <field name="dni">45678901D</field>
-            <field name="email">ana.lopez@logitrans.com</field>
-            <field name="phone">+34 945 678 901</field>
-            <field name="birthdate">1992-05-17</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_005">
-            <field name="name">Pedro Sánchez Díaz</field>
-            <field name="dni">56789012E</field>
-            <field name="email">pedro.sanchez@logitrans.com</field>
-            <field name="phone">+34 956 789 012</field>
-            <field name="birthdate">1987-09-30</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_006">
-            <field name="name">Sofía García Iglesias</field>
-            <field name="dni">67890123F</field>
-            <field name="email">sofia.garcia@logitrans.com</field>
-            <field name="phone">+34 967 890 123</field>
-            <field name="birthdate">1995-02-12</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_007">
-            <field name="name">Miguel Torres Blanco</field>
-            <field name="dni">78901234G</field>
-            <field name="email">miguel.torres@logitrans.com</field>
-            <field name="phone">+34 978 901 234</field>
-            <field name="birthdate">1989-06-25</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_008">
-            <field name="name">Lucía Moreno Castro</field>
-            <field name="dni">89012345H</field>
-            <field name="email">lucia.moreno@logitrans.com</field>
-            <field name="phone">+34 989 012 345</field>
-            <field name="birthdate">1993-04-20</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_009">
-            <field name="name">Roberto Vázquez Ramos</field>
-            <field name="dni">90123456I</field>
-            <field name="email">roberto.vazquez@logitrans.com</field>
-            <field name="phone">+34 990 123 456</field>
-            <field name="birthdate">1986-10-14</field>
-        </record>
-
-        <record model="logitrans.persona" id="persona_010">
-            <field name="name">Isabel Navarro López</field>
-            <field name="dni">01234567J</field>
-            <field name="email">isabel.navarro@logitrans.com</field>
-            <field name="phone">+34 901 234 567</field>
-            <field name="birthdate">1991-08-03</field>
-        </record>
-
-        
-        <!-- ===== CONDUCTORES (10 registros) ===== -->
-        
-        <record model="logitrans.conductor" id="conductor_001">
-            <field name="name">Antonio Ruiz García</field>
-            <field name="dni">11111111A</field>
-            <field name="email">antonio.ruiz@logitrans.com</field>
-            <field name="phone">+34 911 111 111</field>
-            <field name="birthdate">1980-01-10</field>
-            <field name="type_licencia">B</field>
-            <field name="points_licencia">15</field>
-            <field name="fecha_vencimiento_licencia">2026-06-15</field>
-            <field name="state">activo</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_002">
-            <field name="name">Francisco Jiménez López</field>
-            <field name="dni">22222222B</field>
-            <field name="email">francisco.jimenez@logitrans.com</field>
-            <field name="phone">+34 922 222 222</field>
-            <field name="birthdate">1982-05-20</field>
-            <field name="type_licencia">C</field>
-            <field name="points_licencia">12</field>
-            <field name="fecha_vencimiento_licencia">2025-11-30</field>
-            <field name="state">activo</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_003">
-            <field name="name">Diego Ortega Martínez</field>
-            <field name="dni">33333333C</field>
-            <field name="email">diego.ortega@logitrans.com</field>
-            <field name="phone">+34 933 333 333</field>
-            <field name="birthdate">1984-09-15</field>
-            <field name="type_licencia">D</field>
-            <field name="points_licencia">10</field>
-            <field name="fecha_vencimiento_licencia">2025-03-20</field>
-            <field name="state">activo</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_004">
-            <field name="name">José María Serrano Ruiz</field>
-            <field name="dni">44444444D</field>
-            <field name="email">josemaria.serrano@logitrans.com</field>
-            <field name="phone">+34 944 444 444</field>
-            <field name="birthdate">1981-12-08</field>
-            <field name="type_licencia">B</field>
-            <field name="points_licencia">8</field>
-            <field name="fecha_vencimiento_licencia">2027-01-10</field>
-            <field name="state">en_reserva</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_005">
-            <field name="name">Raúl Gómez Fernández</field>
-            <field name="dni">55555555E</field>
-            <field name="email">raul.gomez@logitrans.com</field>
-            <field name="phone">+34 955 555 555</field>
-            <field name="birthdate">1983-07-25</field>
-            <field name="type_licencia">C</field>
-            <field name="points_licencia">14</field>
-            <field name="fecha_vencimiento_licencia">2026-08-15</field>
-            <field name="state">activo</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_006">
-            <field name="name">Javier Alonso González</field>
-            <field name="dni">66666666F</field>
-            <field name="email">javier.alonso@logitrans.com</field>
-            <field name="phone">+34 966 666 666</field>
-            <field name="birthdate">1985-04-12</field>
-            <field name="type_licencia">B</field>
-            <field name="points_licencia">11</field>
-            <field name="fecha_vencimiento_licencia">2024-12-01</field>
-            <field name="state">inactivo</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_007">
-            <field name="name">Eduardo Molina Castillo</field>
-            <field name="dni">77777777G</field>
-            <field name="email">eduardo.molina@logitrans.com</field>
-            <field name="phone">+34 977 777 777</field>
-            <field name="birthdate">1979-11-30</field>
-            <field name="type_licencia">D</field>
-            <field name="points_licencia">13</field>
-            <field name="fecha_vencimiento_licencia">2025-05-22</field>
-            <field name="state">activo</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_008">
-            <field name="name">Guillermo Díaz Pérez</field>
-            <field name="dni">88888888H</field>
-            <field name="email">guillermo.diaz@logitrans.com</field>
-            <field name="phone">+34 988 888 888</field>
-            <field name="birthdate">1986-02-18</field>
-            <field name="type_licencia">C</field>
-            <field name="points_licencia">15</field>
-            <field name="fecha_vencimiento_licencia">2026-10-05</field>
-            <field name="state">activo</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_009">
-            <field name="name">Víctor Romero Iglesias</field>
-            <field name="dni">99999999I</field>
-            <field name="email">victor.romero@logitrans.com</field>
-            <field name="phone">+34 999 999 999</field>
-            <field name="birthdate">1988-08-27</field>
-            <field name="type_licencia">B</field>
-            <field name="points_licencia">9</field>
-            <field name="fecha_vencimiento_licencia">2025-09-15</field>
-            <field name="state">en_reserva</field>
-        </record>
-
-        <record model="logitrans.conductor" id="conductor_010">
-            <field name="name">Alfonso Herrera Sánchez</field>
-            <field name="dni">00000000J</field>
-            <field name="email">alfonso.herrera@logitrans.com</field>
-            <field name="phone">+34 900 000 000</field>
-            <field name="birthdate">1982-03-05</field>
-            <field name="type_licencia">D</field>
-            <field name="points_licencia">7</field>
-            <field name="fecha_vencimiento_licencia">2026-02-14</field>
-            <field name="state">activo</field>
-        </record>
-
-        
-        <!-- ===== ADMINISTRATIVOS (10 registros) ===== -->
-        
-        <record model="logitrans.administrativo" id="administrativo_001">
-            <field name="name">Patricia Yáñez Aguirre</field>
-            <field name="dni">11223344A</field>
-            <field name="email">patricia.yanez@logitrans.com</field>
-            <field name="phone">+34 911 223 344</field>
-            <field name="birthdate">1989-01-15</field>
-            <field name="departamento">administracion</field>
-            <field name="extension_telefonica">201</field>
-            <field name="nivel_acceso">4</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_002">
-            <field name="name">Carmen Mejía López</field>
-            <field name="dni">22334455B</field>
-            <field name="email">carmen.mejia@logitrans.com</field>
-            <field name="phone">+34 922 334 455</field>
-            <field name="birthdate">1991-06-20</field>
-            <field name="departamento">finanzas</field>
-            <field name="extension_telefonica">301</field>
-            <field name="nivel_acceso">3</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_003">
-            <field name="name">Fernando Montoya Gómez</field>
-            <field name="dni">33445566C</field>
-            <field name="email">fernando.montoya@logitrans.com</field>
-            <field name="phone">+34 933 445 566</field>
-            <field name="birthdate">1987-11-08</field>
-            <field name="departamento">recursos_humanos</field>
-            <field name="extension_telefonica">401</field>
-            <field name="nivel_acceso">4</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_004">
-            <field name="name">Beatriz Calvo Rodríguez</field>
-            <field name="dni">44556677D</field>
-            <field name="email">beatriz.calvo@logitrans.com</field>
-            <field name="phone">+34 944 556 677</field>
-            <field name="birthdate">1993-03-22</field>
-            <field name="departamento">marketing</field>
-            <field name="extension_telefonica">501</field>
-            <field name="nivel_acceso">2</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_005">
-            <field name="name">Ricardo Salinas Pérez</field>
-            <field name="dni">55667788E</field>
-            <field name="email">ricardo.salinas@logitrans.com</field>
-            <field name="phone">+34 955 667 788</field>
-            <field name="birthdate">1988-09-14</field>
-            <field name="departamento">administracion</field>
-            <field name="extension_telefonica">202</field>
-            <field name="nivel_acceso">2</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_006">
-            <field name="name">Marta Espinosa García</field>
-            <field name="dni">66778899F</field>
-            <field name="email">marta.espinosa@logitrans.com</field>
-            <field name="phone">+34 966 778 899</field>
-            <field name="birthdate">1990-12-30</field>
-            <field name="departamento">finanzas</field>
-            <field name="extension_telefonica">302</field>
-            <field name="nivel_acceso">3</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_007">
-            <field name="name">Óscar Campos Morales</field>
-            <field name="dni">77889900G</field>
-            <field name="email">oscar.campos@logitrans.com</field>
-            <field name="phone">+34 977 889 900</field>
-            <field name="birthdate">1986-05-19</field>
-            <field name="departamento">recursos_humanos</field>
-            <field name="extension_telefonica">402</field>
-            <field name="nivel_acceso">5</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_008">
-            <field name="name">Elena Núñez Domínguez</field>
-            <field name="dni">88990011H</field>
-            <field name="email">elena.nunez@logitrans.com</field>
-            <field name="phone">+34 988 990 011</field>
-            <field name="birthdate">1992-07-11</field>
-            <field name="departamento">marketing</field>
-            <field name="extension_telefonica">502</field>
-            <field name="nivel_acceso">2</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_009">
-            <field name="name">Sebastián Rojas Martínez</field>
-            <field name="dni">99001122I</field>
-            <field name="email">sebastian.rojas@logitrans.com</field>
-            <field name="phone">+34 999 001 122</field>
-            <field name="birthdate">1985-10-27</field>
-            <field name="departamento">administracion</field>
-            <field name="extension_telefonica">203</field>
-            <field name="nivel_acceso">3</field>
-        </record>
-
-        <record model="logitrans.administrativo" id="administrativo_010">
-            <field name="name">Verónica Rincón Silva</field>
-            <field name="dni">00112233J</field>
-            <field name="email">veronica.rincon@logitrans.com</field>
-            <field name="phone">+34 900 112 233</field>
-            <field name="birthdate">1994-02-06</field>
-            <field name="departamento">finanzas</field>
-            <field name="extension_telefonica">303</field>
-            <field name="nivel_acceso">1</field>
-        </record>
-
-    </data>
+  <data>
+
+    <!-- Datos de demo de ubicaciones-->
+    <record id="Ubicacion0" model="logitrans.ubicacion">
+      <field name="nombre">Ubicacion 0</field>
+      <field name="direccion">Direccion 0</field>
+      <field name="provincia" ref="base.state_es_se"/>
+      <field name="ciudad">Dos Hermanas</field>
+      <field name="longitud">37.2744</field>
+      <field name="latitud">-5.9249</field>
+    </record>
+    <record id="Ubicacion1" model="logitrans.ubicacion">
+      <field name="nombre">Ubicacion 1</field>
+      <field name="direccion">Direccion 1</field>
+      <field name="provincia" ref="base.state_es_se"/>
+      <field name="ciudad">Sevilla</field>
+      <field name="longitud">37.3891</field>
+      <field name="latitud">-5.9845</field>
+    </record>
+    <record id="Ubicacion2" model="logitrans.ubicacion">
+      <field name="nombre">Ubicacion 2</field>
+      <field name="direccion">Direccion 2</field>
+      <field name="provincia" ref="base.state_es_ca"/>
+      <field name="ciudad">Jerez de la Frontera</field>
+      <field name="longitud">36.6867</field>
+      <field name="latitud">-6.1344</field>
+    </record>
+
+    <!-- Datos de demo de rutas-->
+    <record id="Ruta0" model="logitrans.rutas">
+      <field name="tipo_ruta">Urbana</field>
+      <field name="distancia_estimada">20</field>
+      <field name="destino_ubicacion_id" ref="Ubicacion0"/>
+      <field name="origen_ubicacion_id" ref="Ubicacion1"/>
+    </record>
+    <record id="Ruta1" model="logitrans.rutas">
+      <field name="tipo_ruta">Nacional</field>
+      <field name="distancia_estimada">500</field>
+      <field name="destino_ubicacion_id" ref="Ubicacion0"/>
+      <field name="origen_ubicacion_id" ref="Ubicacion2"/>
+    </record>
+    <record id="Ruta2" model="logitrans.rutas">
+      <field name="tipo_ruta">Provincial</field>
+      <field name="distancia_estimada">100</field>
+      <field name="destino_ubicacion_id" ref="Ubicacion2"/>
+      <field name="origen_ubicacion_id" ref="Ubicacion1"/>
+    </record>
+
+
+
+    <!-- ===================== -->
+    <!-- VEHICULOS (demo) -->
+    <!-- ===================== -->
+
+    <record id="demo_vehiculo_1234ABC" model="logitrans.vehiculo">
+      <field name="matricula">1234ABC</field>
+      <field name="marca">ACME</field>
+      <field name="modelo">Patito</field>
+      <field name="anio_fabricacion">2010</field>
+      <field name="fecha_matriculacion">2011-01-03</field>
+      <field name="capacidad_kg">2500.0</field>
+      <field name="activo">True</field>
+    </record>
+
+    <record id="demo_vehiculo_4821BCR" model="logitrans.vehiculo">
+      <field name="matricula">4821BCR</field>
+      <field name="marca">Renault</field>
+      <field name="modelo">Kangoo</field>
+      <field name="anio_fabricacion">2020</field>
+      <field name="fecha_matriculacion">2021-03-15</field>
+      <field name="capacidad_kg">650.0</field>
+      <field name="activo">True</field>
+    </record>
+
+    <record id="demo_vehiculo_7395DGT" model="logitrans.vehiculo">
+      <field name="matricula">7395DGT</field>
+      <field name="marca">Citroën</field>
+      <field name="modelo">Bingo</field>
+      <field name="anio_fabricacion">2019</field>
+      <field name="fecha_matriculacion">2019-05-10</field>
+      <field name="capacidad_kg">800.0</field>
+      <field name="activo">True</field>
+    </record>
+
+    <record id="demo_vehiculo_1560KLM" model="logitrans.vehiculo">
+      <field name="matricula">1560KLM</field>
+      <field name="marca">Volkswagen</field>
+      <field name="modelo">Caddy</field>
+      <field name="anio_fabricacion">2021</field>
+      <field name="fecha_matriculacion">2022-02-02</field>
+      <field name="capacidad_kg">900.0</field>
+      <field name="activo">True</field>
+    </record>
+
+    <record id="demo_vehiculo_9043PRS" model="logitrans.vehiculo">
+      <field name="matricula">9043PRS</field>
+      <field name="marca">Ford</field>
+      <field name="modelo">Transit</field>
+      <field name="anio_fabricacion">2018</field>
+      <field name="fecha_matriculacion">2018-09-11</field>
+      <field name="capacidad_kg">1400.0</field>
+      <field name="activo">True</field>
+    </record>
+
+    <record id="demo_vehiculo_2687TRV" model="logitrans.vehiculo">
+      <field name="matricula">2687TRV</field>
+      <field name="marca">Mercedes</field>
+      <field name="modelo">Sprinter</field>
+      <field name="anio_fabricacion">2020</field>
+      <field name="fecha_matriculacion">2021-01-20</field>
+      <field name="capacidad_kg">1700.0</field>
+      <field name="activo">True</field>
+    </record>
+
+    <record id="demo_vehiculo_6112GHR" model="logitrans.vehiculo">
+      <field name="matricula">6112GHR</field>
+      <field name="marca">Iveco</field>
+      <field name="modelo">Daily</field>
+      <field name="anio_fabricacion">2017</field>
+      <field name="fecha_matriculacion">2017-06-01</field>
+      <field name="capacidad_kg">1600.0</field>
+      <field name="activo">True</field>
+    </record>
+
+    <record id="demo_vehiculo_8470MNP" model="logitrans.vehiculo">
+      <field name="matricula">8470MNP</field>
+      <field name="marca">Peugeot</field>
+      <field name="modelo">Partner</field>
+      <field name="anio_fabricacion">2022</field>
+      <field name="fecha_matriculacion">2023-04-18</field>
+      <field name="capacidad_kg">700.0</field>
+      <field name="activo">True</field>
+    </record>
+
+
+    <!-- TIPOS DE CARGA (demo) -->
+    <record id="demo_carga_estandar" model="logitrans.tipo_carga">
+      <field name="name">Estándar</field>
+      <field name="descripcion">Envíos de tamaño y peso moderado sin requisitos especiales de transporte.</field>
+      <field name="vigente">True</field>
+    </record>
+
+    <record id="demo_carga_perecedera" model="logitrans.tipo_carga">
+      <field name="name">Perecedera</field>
+      <field name="descripcion">Productos con caducidad o sensibles al tiempo, como alimentos frescos.</field>
+      <field name="vigente">True</field>
+    </record>
+
+    <record id="demo_carga_refrigerada" model="logitrans.tipo_carga">
+      <field name="name">Refrigerada</field>
+      <field name="descripcion">Carga que requiere control de temperatura durante el transporte.</field>
+      <field name="vigente">True</field>
+    </record>
+
+    <record id="demo_carga_fragil" model="logitrans.tipo_carga">
+      <field name="name">Frágil</field>
+      <field name="descripcion">Mercancía que necesita manipulación cuidadosa para evitar daños.</field>
+      <field name="vigente">True</field>
+    </record>
+
+    <record id="demo_carga_peligrosa" model="logitrans.tipo_carga">
+      <field name="name">Peligrosa</field>
+      <field name="descripcion">Sustancias o materiales que requieren autorización y medidas de seguridad especiales.</field>
+      <field name="vigente">True</field>
+    </record>
+
+    <record id="demo_carga_voluminosa" model="logitrans.tipo_carga">
+      <field name="name">Voluminosa</field>
+      <field name="descripcion">Carga de gran tamaño que ocupa mucho espacio aunque no sea pesada.</field>
+      <field name="vigente">True</field>
+    </record>
+
+    <record id="demo_carga_electronica" model="logitrans.tipo_carga">
+      <field name="name">Electrónica</field>
+      <field name="descripcion">Equipos electrónicos sensibles a golpes, humedad o descargas.</field>
+      <field name="vigente">True</field>
+    </record>
+
+    <record id="demo_carga_documentacion" model="logitrans.tipo_carga">
+      <field name="name">Documentación</field>
+      <field name="descripcion">Sobres y documentos que requieren entrega rápida y segura.</field>
+      <field name="vigente">True</field>
+    </record>
+
+
+    <!-- AUTORIZACIONES (demo) -->
+
+    <!-- 4821BCR -->
+    <record id="demo_aut_01" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+      <field name="tipo_carga_id" ref="demo_carga_refrigerada"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-02-17</field>
+      <field name="limite_kg">200.0</field>
+      <field name="observaciones">Control temperatura. Solo reparto urbano.</field>
+    </record>
+
+    <record id="demo_aut_02" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+      <field name="tipo_carga_id" ref="demo_carga_perecedera"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-02-17</field>
+      <field name="limite_kg">250.0</field>
+      <field name="observaciones">Entrega rápida. Prioridad ruta corta.</field>
+    </record>
+
+    <!-- 7395DGT -->
+    <record id="demo_aut_03" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+      <field name="tipo_carga_id" ref="demo_carga_estandar"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">800.0</field>
+      <field name="observaciones">Paquetería general.</field>
+    </record>
+
+    <record id="demo_aut_04" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+      <field name="tipo_carga_id" ref="demo_carga_documentacion"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">50.0</field>
+      <field name="observaciones">Sobres/documentos. Compartimento separado.</field>
+    </record>
+
+    <record id="demo_aut_05" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+      <field name="tipo_carga_id" ref="demo_carga_electronica"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">200.0</field>
+      <field name="observaciones">Requiere embalaje protegido.</field>
+    </record>
+
+    <!-- 1560KLM -->
+    <record id="demo_aut_06" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+      <field name="tipo_carga_id" ref="demo_carga_fragil"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">150.0</field>
+      <field name="observaciones">Manipulación cuidadosa. Anclajes.</field>
+    </record>
+
+    <record id="demo_aut_07" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+      <field name="tipo_carga_id" ref="demo_carga_electronica"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">200.0</field>
+      <field name="observaciones">Anti-golpes. Evitar humedad.</field>
+    </record>
+
+    <record id="demo_aut_08" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+      <field name="tipo_carga_id" ref="demo_carga_documentacion"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">50.0</field>
+      <field name="observaciones">Entrega prioritaria.</field>
+    </record>
+
+    <!-- 9043PRS -->
+    <record id="demo_aut_09" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
+      <field name="tipo_carga_id" ref="demo_carga_voluminosa"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">1200.0</field>
+      <field name="observaciones">Cargas grandes, sin frío.</field>
+    </record>
+
+    <record id="demo_aut_10" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
+      <field name="tipo_carga_id" ref="demo_carga_estandar"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">1400.0</field>
+      <field name="observaciones">Paquetería grande.</field>
+    </record>
+
+    <!-- 2687TRV -->
+    <record id="demo_aut_11" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+      <field name="tipo_carga_id" ref="demo_carga_estandar"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">1700.0</field>
+      <field name="observaciones">Rutas interurbanas.</field>
+    </record>
+
+    <record id="demo_aut_12" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+      <field name="tipo_carga_id" ref="demo_carga_voluminosa"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">1500.0</field>
+      <field name="observaciones">Carga grande por volumen.</field>
+    </record>
+
+    <record id="demo_aut_13" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+      <field name="tipo_carga_id" ref="demo_carga_fragil"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">200.0</field>
+      <field name="observaciones">Zona de carga asegurada.</field>
+    </record>
+
+    <record id="demo_aut_14" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+      <field name="tipo_carga_id" ref="demo_carga_electronica"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-07-17</field>
+      <field name="limite_kg">300.0</field>
+      <field name="observaciones">Carga sensible.</field>
+    </record>
+
+    <!-- 6112GHR -->
+    <record id="demo_aut_15" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_6112GHR"/>
+      <field name="tipo_carga_id" ref="demo_carga_peligrosa"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-04-17</field>
+      <field name="limite_kg">200.0</field>
+      <field name="observaciones">Permiso especial. Protocolo seguridad.</field>
+    </record>
+
+    <!-- 8470MNP -->
+    <record id="demo_aut_16" model="logitrans.vehiculo_tipo_carga">
+      <field name="vehiculo_id" ref="demo_vehiculo_8470MNP"/>
+      <field name="tipo_carga_id" ref="demo_carga_refrigerada"/>
+      <field name="vigente">True</field>
+      <field name="fecha_autorizacion">2026-01-17</field>
+      <field name="proxima_renovacion">2026-02-17</field>
+      <field name="limite_kg">180.0</field>
+      <field name="observaciones">Última milla frío.</field>
+    </record>
+    <!-- ===================== -->
+    <!-- MANTENIMIENTOS (demo) -->
+    <!-- ===================== -->
+
+    <record id="demo_mant_01" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+      <field name="fecha">2026-01-05</field>
+      <field name="tipo">preventivo</field>
+      <field name="coste">35.0</field>
+      <field name="descripcion">Revisión general (aceite, niveles, luces).</field>
+      <field name="state">solicitud</field>
+    </record>
+
+    <record id="demo_mant_02" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+      <field name="fecha">2026-01-07</field>
+      <field name="tipo">itv</field>
+      <field name="coste">45.0</field>
+      <field name="descripcion">ITV anual programada.</field>
+      <field name="state">programado</field>
+    </record>
+
+    <record id="demo_mant_03" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+      <field name="fecha">2026-01-08</field>
+      <field name="tipo">reparacion</field>
+      <field name="coste">120.0</field>
+      <field name="descripcion">Sustitución de pastillas de freno.</field>
+      <field name="state">en_proceso</field>
+    </record>
+
+    <record id="demo_mant_04" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
+      <field name="fecha">2026-01-09</field>
+      <field name="tipo">estetico</field>
+      <field name="coste">60.0</field>
+      <field name="descripcion">Limpieza interior + pulido exterior.</field>
+      <field name="state">realizado</field>
+    </record>
+
+    <record id="demo_mant_05" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_2687TRV"/>
+      <field name="fecha">2026-01-10</field>
+      <field name="tipo">reparacion</field>
+      <field name="coste">0.0</field>
+      <field name="descripcion">Diagnóstico inicial (sin coste).</field>
+      <field name="state">solicitud</field>
+    </record>
+
+    <record id="demo_mant_06" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_6112GHR"/>
+      <field name="fecha">2026-01-11</field>
+      <field name="tipo">preventivo</field>
+      <field name="coste">50.0</field>
+      <field name="descripcion">Cambio de filtros + revisión neumáticos.</field>
+      <field name="state">programado</field>
+    </record>
+
+    <record id="demo_mant_07" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_8470MNP"/>
+      <field name="fecha">2026-01-12</field>
+      <field name="tipo">itv</field>
+      <field name="coste">45.0</field>
+      <field name="descripcion">ITV (vehículo de última milla).</field>
+      <field name="state">en_proceso</field>
+    </record>
+
+    <record id="demo_mant_08" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_1234ABC"/>
+      <field name="fecha">2026-01-13</field>
+      <field name="tipo">preventivo</field>
+      <field name="coste">40.0</field>
+      <field name="descripcion">Revisión básica para puesta a punto.</field>
+      <field name="state">realizado</field>
+    </record>
+
+    <record id="demo_mant_09" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+      <field name="fecha">2025-12-20</field>
+      <field name="tipo">reparacion</field>
+      <field name="coste">210.0</field>
+      <field name="descripcion">Reparación sistema de refrigeración.</field>
+      <field name="state">realizado</field>
+    </record>
+
+    <record id="demo_mant_10" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+      <field name="fecha">2025-12-28</field>
+      <field name="tipo">estetico</field>
+      <field name="coste">30.0</field>
+      <field name="descripcion">Limpieza rápida (fin de año).</field>
+      <field name="state">cancelado</field>
+      <field name="observaciones">Cancelado por falta de disponibilidad en taller.</field>
+    </record>
+
+    <record id="demo_mant_11" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_1560KLM"/>
+      <field name="fecha">2025-11-15</field>
+      <field name="tipo">preventivo</field>
+      <field name="coste">55.0</field>
+      <field name="descripcion">Revisión pre-invierno.</field>
+      <field name="state">realizado</field>
+    </record>
+
+    <record id="demo_mant_12" model="logitrans.mantenimiento">
+      <field name="vehiculo_id" ref="demo_vehiculo_9043PRS"/>
+      <field name="fecha">2025-11-30</field>
+      <field name="tipo">reparacion</field>
+      <field name="coste">180.0</field>
+      <field name="descripcion">Sustitución de batería.</field>
+      <field name="state">cancelado</field>
+      <field name="observaciones">Cancelado por pieza no disponible (batería).</field>
+    </record>
+
+    <!-- ===== PERSONAS (10 registros) ===== -->
+
+    <record model="logitrans.persona" id="persona_001">
+      <field name="name">Juan García López</field>
+      <field name="dni">12345678A</field>
+      <field name="email">juan.garcia@logitrans.com</field>
+      <field name="phone">+34 912 345 678</field>
+      <field name="birthdate">1985-03-15</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_002">
+      <field name="name">María Rodríguez González</field>
+      <field name="dni">23456789B</field>
+      <field name="email">maria.rodriguez@logitrans.com</field>
+      <field name="phone">+34 923 456 789</field>
+      <field name="birthdate">1990-07-22</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_003">
+      <field name="name">Carlos Fernández Martín</field>
+      <field name="dni">34567890C</field>
+      <field name="email">carlos.fernandez@logitrans.com</field>
+      <field name="phone">+34 934 567 890</field>
+      <field name="birthdate">1988-11-08</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_004">
+      <field name="name">Ana López Ruiz</field>
+      <field name="dni">45678901D</field>
+      <field name="email">ana.lopez@logitrans.com</field>
+      <field name="phone">+34 945 678 901</field>
+      <field name="birthdate">1992-05-17</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_005">
+      <field name="name">Pedro Sánchez Díaz</field>
+      <field name="dni">56789012E</field>
+      <field name="email">pedro.sanchez@logitrans.com</field>
+      <field name="phone">+34 956 789 012</field>
+      <field name="birthdate">1987-09-30</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_006">
+      <field name="name">Sofía García Iglesias</field>
+      <field name="dni">67890123F</field>
+      <field name="email">sofia.garcia@logitrans.com</field>
+      <field name="phone">+34 967 890 123</field>
+      <field name="birthdate">1995-02-12</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_007">
+      <field name="name">Miguel Torres Blanco</field>
+      <field name="dni">78901234G</field>
+      <field name="email">miguel.torres@logitrans.com</field>
+      <field name="phone">+34 978 901 234</field>
+      <field name="birthdate">1989-06-25</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_008">
+      <field name="name">Lucía Moreno Castro</field>
+      <field name="dni">89012345H</field>
+      <field name="email">lucia.moreno@logitrans.com</field>
+      <field name="phone">+34 989 012 345</field>
+      <field name="birthdate">1993-04-20</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_009">
+      <field name="name">Roberto Vázquez Ramos</field>
+      <field name="dni">90123456I</field>
+      <field name="email">roberto.vazquez@logitrans.com</field>
+      <field name="phone">+34 990 123 456</field>
+      <field name="birthdate">1986-10-14</field>
+    </record>
+
+    <record model="logitrans.persona" id="persona_010">
+      <field name="name">Isabel Navarro López</field>
+      <field name="dni">01234567J</field>
+      <field name="email">isabel.navarro@logitrans.com</field>
+      <field name="phone">+34 901 234 567</field>
+      <field name="birthdate">1991-08-03</field>
+    </record>
+
+
+    <!-- ===== CONDUCTORES (10 registros) ===== -->
+
+    <record model="logitrans.conductor" id="conductor_001">
+      <field name="name">Antonio Ruiz García</field>
+      <field name="dni">11111111A</field>
+      <field name="email">antonio.ruiz@logitrans.com</field>
+      <field name="phone">+34 911 111 111</field>
+      <field name="birthdate">1980-01-10</field>
+      <field name="type_licencia">B</field>
+      <field name="points_licencia">15</field>
+      <field name="fecha_vencimiento_licencia">2026-06-15</field>
+      <field name="state">activo</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_002">
+      <field name="name">Francisco Jiménez López</field>
+      <field name="dni">22222222B</field>
+      <field name="email">francisco.jimenez@logitrans.com</field>
+      <field name="phone">+34 922 222 222</field>
+      <field name="birthdate">1982-05-20</field>
+      <field name="type_licencia">C</field>
+      <field name="points_licencia">12</field>
+      <field name="fecha_vencimiento_licencia">2025-11-30</field>
+      <field name="state">activo</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_003">
+      <field name="name">Diego Ortega Martínez</field>
+      <field name="dni">33333333C</field>
+      <field name="email">diego.ortega@logitrans.com</field>
+      <field name="phone">+34 933 333 333</field>
+      <field name="birthdate">1984-09-15</field>
+      <field name="type_licencia">D</field>
+      <field name="points_licencia">10</field>
+      <field name="fecha_vencimiento_licencia">2025-03-20</field>
+      <field name="state">activo</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_004">
+      <field name="name">José María Serrano Ruiz</field>
+      <field name="dni">44444444D</field>
+      <field name="email">josemaria.serrano@logitrans.com</field>
+      <field name="phone">+34 944 444 444</field>
+      <field name="birthdate">1981-12-08</field>
+      <field name="type_licencia">B</field>
+      <field name="points_licencia">8</field>
+      <field name="fecha_vencimiento_licencia">2027-01-10</field>
+      <field name="state">en_reserva</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_005">
+      <field name="name">Raúl Gómez Fernández</field>
+      <field name="dni">55555555E</field>
+      <field name="email">raul.gomez@logitrans.com</field>
+      <field name="phone">+34 955 555 555</field>
+      <field name="birthdate">1983-07-25</field>
+      <field name="type_licencia">C</field>
+      <field name="points_licencia">14</field>
+      <field name="fecha_vencimiento_licencia">2026-08-15</field>
+      <field name="state">activo</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_006">
+      <field name="name">Javier Alonso González</field>
+      <field name="dni">66666666F</field>
+      <field name="email">javier.alonso@logitrans.com</field>
+      <field name="phone">+34 966 666 666</field>
+      <field name="birthdate">1985-04-12</field>
+      <field name="type_licencia">B</field>
+      <field name="points_licencia">11</field>
+      <field name="fecha_vencimiento_licencia">2024-12-01</field>
+      <field name="state">inactivo</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_007">
+      <field name="name">Eduardo Molina Castillo</field>
+      <field name="dni">77777777G</field>
+      <field name="email">eduardo.molina@logitrans.com</field>
+      <field name="phone">+34 977 777 777</field>
+      <field name="birthdate">1979-11-30</field>
+      <field name="type_licencia">D</field>
+      <field name="points_licencia">13</field>
+      <field name="fecha_vencimiento_licencia">2025-05-22</field>
+      <field name="state">activo</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_008">
+      <field name="name">Guillermo Díaz Pérez</field>
+      <field name="dni">88888888H</field>
+      <field name="email">guillermo.diaz@logitrans.com</field>
+      <field name="phone">+34 988 888 888</field>
+      <field name="birthdate">1986-02-18</field>
+      <field name="type_licencia">C</field>
+      <field name="points_licencia">15</field>
+      <field name="fecha_vencimiento_licencia">2026-10-05</field>
+      <field name="state">activo</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_009">
+      <field name="name">Víctor Romero Iglesias</field>
+      <field name="dni">99999999I</field>
+      <field name="email">victor.romero@logitrans.com</field>
+      <field name="phone">+34 999 999 999</field>
+      <field name="birthdate">1988-08-27</field>
+      <field name="type_licencia">B</field>
+      <field name="points_licencia">9</field>
+      <field name="fecha_vencimiento_licencia">2025-09-15</field>
+      <field name="state">en_reserva</field>
+    </record>
+
+    <record model="logitrans.conductor" id="conductor_010">
+      <field name="name">Alfonso Herrera Sánchez</field>
+      <field name="dni">00000000J</field>
+      <field name="email">alfonso.herrera@logitrans.com</field>
+      <field name="phone">+34 900 000 000</field>
+      <field name="birthdate">1982-03-05</field>
+      <field name="type_licencia">D</field>
+      <field name="points_licencia">7</field>
+      <field name="fecha_vencimiento_licencia">2026-02-14</field>
+      <field name="state">activo</field>
+    </record>
+
+
+    <!-- ===== ADMINISTRATIVOS (10 registros) ===== -->
+
+    <record model="logitrans.administrativo" id="administrativo_001">
+      <field name="name">Patricia Yáñez Aguirre</field>
+      <field name="dni">11223344A</field>
+      <field name="email">patricia.yanez@logitrans.com</field>
+      <field name="phone">+34 911 223 344</field>
+      <field name="birthdate">1989-01-15</field>
+      <field name="departamento">administracion</field>
+      <field name="extension_telefonica">201</field>
+      <field name="nivel_acceso">4</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_002">
+      <field name="name">Carmen Mejía López</field>
+      <field name="dni">22334455B</field>
+      <field name="email">carmen.mejia@logitrans.com</field>
+      <field name="phone">+34 922 334 455</field>
+      <field name="birthdate">1991-06-20</field>
+      <field name="departamento">finanzas</field>
+      <field name="extension_telefonica">301</field>
+      <field name="nivel_acceso">3</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_003">
+      <field name="name">Fernando Montoya Gómez</field>
+      <field name="dni">33445566C</field>
+      <field name="email">fernando.montoya@logitrans.com</field>
+      <field name="phone">+34 933 445 566</field>
+      <field name="birthdate">1987-11-08</field>
+      <field name="departamento">recursos_humanos</field>
+      <field name="extension_telefonica">401</field>
+      <field name="nivel_acceso">4</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_004">
+      <field name="name">Beatriz Calvo Rodríguez</field>
+      <field name="dni">44556677D</field>
+      <field name="email">beatriz.calvo@logitrans.com</field>
+      <field name="phone">+34 944 556 677</field>
+      <field name="birthdate">1993-03-22</field>
+      <field name="departamento">marketing</field>
+      <field name="extension_telefonica">501</field>
+      <field name="nivel_acceso">2</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_005">
+      <field name="name">Ricardo Salinas Pérez</field>
+      <field name="dni">55667788E</field>
+      <field name="email">ricardo.salinas@logitrans.com</field>
+      <field name="phone">+34 955 667 788</field>
+      <field name="birthdate">1988-09-14</field>
+      <field name="departamento">administracion</field>
+      <field name="extension_telefonica">202</field>
+      <field name="nivel_acceso">2</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_006">
+      <field name="name">Marta Espinosa García</field>
+      <field name="dni">66778899F</field>
+      <field name="email">marta.espinosa@logitrans.com</field>
+      <field name="phone">+34 966 778 899</field>
+      <field name="birthdate">1990-12-30</field>
+      <field name="departamento">finanzas</field>
+      <field name="extension_telefonica">302</field>
+      <field name="nivel_acceso">3</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_007">
+      <field name="name">Óscar Campos Morales</field>
+      <field name="dni">77889900G</field>
+      <field name="email">oscar.campos@logitrans.com</field>
+      <field name="phone">+34 977 889 900</field>
+      <field name="birthdate">1986-05-19</field>
+      <field name="departamento">recursos_humanos</field>
+      <field name="extension_telefonica">402</field>
+      <field name="nivel_acceso">5</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_008">
+      <field name="name">Elena Núñez Domínguez</field>
+      <field name="dni">88990011H</field>
+      <field name="email">elena.nunez@logitrans.com</field>
+      <field name="phone">+34 988 990 011</field>
+      <field name="birthdate">1992-07-11</field>
+      <field name="departamento">marketing</field>
+      <field name="extension_telefonica">502</field>
+      <field name="nivel_acceso">2</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_009">
+      <field name="name">Sebastián Rojas Martínez</field>
+      <field name="dni">99001122I</field>
+      <field name="email">sebastian.rojas@logitrans.com</field>
+      <field name="phone">+34 999 001 122</field>
+      <field name="birthdate">1985-10-27</field>
+      <field name="departamento">administracion</field>
+      <field name="extension_telefonica">203</field>
+      <field name="nivel_acceso">3</field>
+    </record>
+
+    <record model="logitrans.administrativo" id="administrativo_010">
+      <field name="name">Verónica Rincón Silva</field>
+      <field name="dni">00112233J</field>
+      <field name="email">veronica.rincon@logitrans.com</field>
+      <field name="phone">+34 900 112 233</field>
+      <field name="birthdate">1994-02-06</field>
+      <field name="departamento">finanzas</field>
+      <field name="extension_telefonica">303</field>
+      <field name="nivel_acceso">1</field>
+    </record>
+
+
+    <!-- Datos de demo de envios-->
+    <record id="Envio0" model="logitrans.envios">
+      <field name="nombre">Envio 0</field>
+      <field name="fecha_creacion">2025-12-12</field>
+      <field name="peso_kg">20</field>
+      <field name="rutas_ids" eval="[(6, 0, [ref('Ruta0')])]"/>
+      <field name="conductor_id" ref="conductor_001"/>
+      <field name="vehiculo_id" ref="demo_vehiculo_1234ABC"/>
+    </record>
+    <record id="Envio1" model="logitrans.envios">
+      <field name="nombre">Envio 1</field>
+      <field name="fecha_creacion">2026-01-01</field>
+      <field name="peso_kg">20</field>
+      <field name="rutas_ids" eval="[(6, 0, [ref('Ruta1')])]"/>
+      <field name="conductor_id" ref="conductor_002"/>
+      <field name="vehiculo_id" ref="demo_vehiculo_4821BCR"/>
+    </record>
+    <record id="Envio2" model="logitrans.envios">
+      <field name="nombre">Envio 2</field>
+      <field name="fecha_creacion">2026-01-15</field>
+      <field name="peso_kg">20</field>
+      <field name="rutas_ids" eval="[(6, 0, [ref('Ruta2')])]"/>
+      <field name="conductor_id" ref="conductor_003"/>
+      <field name="vehiculo_id" ref="demo_vehiculo_7395DGT"/>
+    </record>
+  </data>
 </odoo>
-
