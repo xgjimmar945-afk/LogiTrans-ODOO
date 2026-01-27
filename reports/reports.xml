@@ -18,6 +18,33 @@
     <field name="dpi">90</field>
   </record>
 
+  <!-- Reporte: Persona -->
+  <record id="logitrans.report_persona_action" model="ir.actions.report">
+    <field name="name">Informe de Personas</field>
+    <field name="model">logitrans.persona</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">logitrans.report_persona_template</field>
+    <field name="print_report_name">'Informe Personas - %s' % (object.name)</field>
+  </record>
+
+  <!-- Reporte: Conductor -->
+  <record id="logitrans.report_conductor_action" model="ir.actions.report">
+    <field name="name">Informe de Conductores</field>
+    <field name="model">logitrans.conductor</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">logitrans.report_conductor_template</field>
+    <field name="print_report_name">'Informe Conductores - %s' % (object.name)</field>
+  </record>
+
+  <!-- Reporte: Administrativo -->
+  <record id="logitrans.report_administrativo_action" model="ir.actions.report">
+    <field name="name">Informe de Administrativos</field>
+    <field name="model">logitrans.administrativo</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">logitrans.report_administrativo_template</field>
+    <field name="print_report_name">'Informe Administrativos - %s' % (object.name)</field>
+  </record>
+
   <!-- Reporte: Mantenimiento -->
   <record id="action_report_mantenimiento" model="ir.actions.report">
     <field name="name">Informe de mantenimiento</field>
@@ -49,12 +76,12 @@
   </record>
 
   <!-- Reporte: Envío-->
-  <report id="logitrans_report_envios_action"
-   string="Informe de Envíos"
-   model="logitrans.envios"
-   report_type="qweb-pdf"
-   name="logitrans.report_envios_template"
-   file="logitrans.report_envios_template"
-   paperformat="base.paperformat_euro" />
+  <report id="logitrans_report_envios_action" 
+  string="Informe de Envíos"
+  model="logitrans.envios" 
+  report_type="qweb-pdf" 
+  name="logitrans.report_envios_template" 
+  file="logitrans.report_envios_template" 
+  paperformat="base.paperformat_euro" />
 
 </odoo>

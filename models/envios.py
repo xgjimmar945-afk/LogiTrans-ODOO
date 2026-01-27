@@ -48,10 +48,11 @@ class Envios(models.Model):
         ("envios_nombre_unique", "UNIQUE (nombre)", "El nombre debe ser único")
     ]
 
-    vehiculo_id = fields.Many2one("logitrans.vehiculo", string="Vehiculo que se encarga del envío")
+    vehiculo_id = fields.Many2one(
+        "logitrans.vehiculo", string="Vehiculo que se encarga del envío"
+    )
 
-    """ 
-    conductor_id = fields.Many2one("logi_trans.conductores", string="Conductor") """
+    conductor_id = fields.Many2one("logitrans.conductor", string="Conductor")
 
     @api.constrains("peso_kg")
     def _check_peso_kg(self):

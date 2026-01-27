@@ -12,10 +12,11 @@
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
+        "reports/reports.xml",
         # Vistas
-        'views/conductor.xml',
-        'views/administrativo.xml',
-        'views/persona.xml',
+        "views/conductor.xml",
+        "views/administrativo.xml",
+        "views/persona.xml",
         "views/vehiculo_views.xml",
         "views/mantenimiento_views.xml",
         "views/tipo_carga_views.xml",
@@ -25,8 +26,7 @@
         "views/ubicacion_views.xml",
         "views/menu_views.xml",
         # Informes
-        "reports/reports.xml",
-        'reports/informes_plantilla.xml',
+        "reports/report_plantilla.xml",
         "reports/mantenimiento_report.xml",
         "reports/vehiculo_report.xml",
         "reports/report_envios.xml",
