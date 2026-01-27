@@ -6,3 +6,6 @@ access_logitrans_vehiculo_tipo_carga,access_logitrans_vehiculo_tipo_carga,model_
 logitrans.envios,logitrans.envios,model_logitrans_envios,base.group_user,1,1,1,1
 logitrans.rutas,logitrans.rutas,model_logitrans_rutas,base.group_user,1,1,1,1
 logitrans.ubicacion,logitrans.ubicacion,model_logitrans_ubicacion,base.group_user,1,1,1,1
+access_logitrans_persona,logitrans.persona,model_logitrans_persona,base.group_user,1,1,1,1
+access_logitrans_conductor,logitrans.conductor,model_logitrans_conductor,base.group_user,1,1,1,1
+access_logitrans_administrativo,logitrans.administrativo,model_logitrans_administrativo,base.group_user,1,1,1,1

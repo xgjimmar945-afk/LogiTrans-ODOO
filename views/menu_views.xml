@@ -7,6 +7,7 @@
         <!-- CATEGORÍAS -->
         <menuitem id="logitrans_menu" name="Servicios" parent="main_logitrans_menu" groups="group_logitrans_manager" sequence="10"/>
         <menuitem id="menu_logitrans_flota" name="Flota" parent="main_logitrans_menu" groups="group_logitrans_manager" sequence="20"/>
+        <menuitem id="menu_logitrans_plantilla" name="Plantilla" parent="main_logitrans_menu" groups="group_logitrans_manager" sequence="30"/>
 
         <!-- SERVICIOS -->
         <menuitem id="envios_menu" name="Envíos" parent="logitrans_menu" action="envios_list_action" groups="group_logitrans_manager" sequence="10"/>
@@ -18,6 +19,10 @@
         <menuitem id="menu_logitrans_mantenimiento" name="Mantenimiento" parent="menu_logitrans_flota" action="action_logitrans_mantenimiento" groups="group_logitrans_manager" sequence="20"/>
         <menuitem id="menu_logitrans_tipo_carga" name="Tipos de carga" parent="menu_logitrans_flota" action="action_logitrans_tipo_carga" groups="group_logitrans_manager" sequence="30"/>
         <menuitem id="menu_logitrans_autorizaciones" name="Autorizaciones" parent="menu_logitrans_flota" action="action_logitrans_vehiculo_tipo_carga" groups="group_logitrans_manager" sequence="40"/>
-
+        
+        <!-- PERSONAS -->
+        <menuitem id="menu_logitrans_personas" name="Personas" parent="menu_logitrans_plantilla" action="persona_action_window"/>  
+        <menuitem id="menu_logitrans_conductores" name="Conductores" parent="menu_logitrans_plantilla" action="conductor_action_window"/>      
+        <menuitem id="menu_logitrans_administrativos" name="Personal Administrativo" parent="menu_logitrans_plantilla" action="administrativo_action_window"/>
     </data>
 </odoo>

@@ -2,20 +2,20 @@
 # from odoo import http
 
 
-# class Gym(http.Controller):
-#     @http.route('/gym/gym/', auth='public')
+# class Logitrans(http.Controller):
+#     @http.route('/logitrans/logitrans/', auth='public')
 #     def index(self, **kw):
 #         return "Hello, world"
 
-#     @http.route('/gym/gym/objects/', auth='public')
+#     @http.route('/logitrans/logitrans/objects/', auth='public')
 #     def list(self, **kw):
-#         return http.request.render('gym.listing', {
-#             'root': '/gym/gym',
-#             'objects': http.request.env['gym.gym'].search([]),
+#         return http.request.render('logitrans.listing', {
+#             'root': '/logitrans/logitrans',
+#             'objects': http.request.env['logitrans.logitrans'].search([]),
 #         })
 
-#     @http.route('/gym/gym/objects/<model("gym.gym"):obj>/', auth='public')
+#     @http.route('/logitrans/logitrans/objects/<model("logitrans.logitrans"):obj>/', auth='public')
 #     def object(self, obj, **kw):
-#         return http.request.render('gym.object', {
+#         return http.request.render('logitrans.object', {
 #             'object': obj
 #         })
