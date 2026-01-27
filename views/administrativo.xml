@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista Tree -->
+        <record model="ir.ui.view" id="administrativo_view_tree">
+            <field name="name">administrativo.tree</field>
+            <field name="model">logitrans.administrativo</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="departamento"/>
+                    <field name="extension_telefonica"/>
+                    <field name="nivel_acceso"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Form -->
+        <record model="ir.ui.view" id="administrativo_view_form">
+            <field name="name">administrativo.form</field>
+            <field name="model">logitrans.administrativo</field>
+            <field name="arch" type="xml">
+                <form string="Personal Administrativo">
+                    <header>
+                        <button name="logitrans.report_administrativo_action" string="Descargar Informe" type="action" class="btn-secondary"/>
+                    </header>
+                    <sheet layout="auto">
+                        <group>
+                            <field name="name"/>
+                            <field name="dni"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="departamento"/>
+                            <field name="extension_telefonica"/>
+                        </group>
+                        <group>
+                            <field name="nivel_acceso"/>
+                        </group>
+                        <group>
+                            <field name="birthdate"/>
+                            <field name="age"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Kanban -->
+        <record model="ir.ui.view" id="administrativo_view_kanban">
+            <field name="name">administrativo.kanban</field>
+            <field name="model">logitrans.administrativo</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_small_column" default_group_by="departamento">
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="departamento"/>
+                    <field name="extension_telefonica"/>
+                    <field name="nivel_acceso"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_card">
+                                <div class="o_kanban_card_header">
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <hr/>
+                                <div class="o_kanban_card_content">
+                                    <div><strong>DNI:</strong> <field name="dni"/></div>
+                                    <hr/>
+                                    <div><strong>Departamento:</strong> <field name="departamento"/></div>
+                                    <hr/>
+                                    <div><strong>Extensión:</strong> <field name="extension_telefonica"/></div>
+                                    <hr/>
+                                    <div><strong>Nivel:</strong> <field name="nivel_acceso"/></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Vista Graph -->
+        <record model="ir.ui.view" id="administrativo_view_graph">
+            <field name="name">administrativo.graph</field>
+            <field name="model">logitrans.administrativo</field>
+            <field name="arch" type="xml">
+                <graph string="Personal por Departamento" type="bar">
+                    <field name="departamento" type="row"/>
+                    <field name="nivel_acceso" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Vista Search -->
+        <record model="ir.ui.view" id="administrativo_view_search">
+            <field name="name">administrativo.search</field>
+            <field name="model">logitrans.administrativo</field>
+            <field name="arch" type="xml">
+                <search string="Búsqueda de Administrativos">
+                    <field name="name" string="Nombre"/>
+                    <field name="dni" string="DNI"/>
+                    <field name="departamento" string="Departamento"/>
+                    <separator/>
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_by_depart" string="Por Departamento" context="{'group_by':'departamento'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="administrativo_action_window">
+            <field name="name">Personal Administrativo</field>
+            <field name="res_model">logitrans.administrativo</field>
+            <field name="view_mode">tree,form,kanban,graph,search</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Crear primer administrativo</p>
+            </field>
+        </record>
+    </data>
+</odoo>

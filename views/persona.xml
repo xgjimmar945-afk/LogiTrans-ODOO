@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista Tree -->
+        <record model="ir.ui.view" id="persona_view_tree">
+            <field name="name">persona.tree</field>
+            <field name="model">logitrans.persona</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="age"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Form -->
+        <record model="ir.ui.view" id="persona_view_form">
+            <field name="name">persona.form</field>
+            <field name="model">logitrans.persona</field>
+            <field name="arch" type="xml">
+                <form string="Personas">
+                    <header>
+                        <button name="logitrans.report_persona_action" string="Descargar Informe" type="action" class="btn-secondary"/>
+                    </header>
+                    <sheet layout="auto">
+                        <group>
+                            <field name="name"/>
+                            <field name="dni"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="birthdate"/>
+                            <field name="age"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Kanban -->
+        <record model="ir.ui.view" id="persona_view_kanban">
+            <field name="name">persona.kanban</field>
+            <field name="model">logitrans.persona</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_small_column">
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="age"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_card">
+                                <div class="o_kanban_card_header">
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <hr/>
+                                <div class="o_kanban_card_content">
+                                    <div><strong>DNI:</strong> <field name="dni"/></div>
+                                    <hr/>
+                                    <div><strong>Email:</strong> <field name="email"/></div>
+                                    <hr/>
+                                    <div><strong>Edad:</strong> <field name="age"/></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Vista Search -->
+        <record model="ir.ui.view" id="persona_view_search">
+            <field name="name">persona.search</field>
+            <field name="model">logitrans.persona</field>
+            <field name="arch" type="xml">
+                <search string="Búsqueda de Personas">
+                    <field name="name" string="Nombre"/>
+                    <field name="dni" string="DNI"/>
+                    <field name="email" string="Email"/>
+                    <filter name="age_18plus" string="Mayores de 18" domain="[('age','>',17)]"/>
+                    <separator/>
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_by_age" string="Por Edad" context="{'group_by':'age'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="persona_action_window">
+            <field name="name">Personas</field>
+            <field name="res_model">logitrans.persona</field>
+            <field name="view_mode">tree,form,kanban,search</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Crear primera persona</p>
+            </field>
+        </record>
+    </data>
+</odoo>

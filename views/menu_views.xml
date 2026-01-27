@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <menuitem id="menu_logitrans_root" name="LogiTrans"/>
+        <menuitem id="menu_logitrans_personas" name="Personal" parent="menu_logitrans_root"/>
+        
+        <menuitem id="menu_logitrans_personas_base" 
+                  name="Personas" 
+                  parent="menu_logitrans_personas" 
+                  action="persona_action_window"/>
+                  
+        <menuitem id="menu_logitrans_conductores" 
+                  name="Conductores" 
+                  parent="menu_logitrans_personas" 
+                  action="conductor_action_window"/>
+                  
+        <menuitem id="menu_logitrans_administrativos" 
+                  name="Personal Administrativo" 
+                  parent="menu_logitrans_personas" 
+                  action="administrativo_action_window"/>
+    </data>
+</odoo>

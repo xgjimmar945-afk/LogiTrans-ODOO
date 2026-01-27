@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- ===== PERSONAS (10 registros) ===== -->
+        
+        <record model="logitrans.persona" id="persona_001">
+            <field name="name">Juan García López</field>
+            <field name="dni">12345678A</field>
+            <field name="email">juan.garcia@logitrans.com</field>
+            <field name="phone">+34 912 345 678</field>
+            <field name="birthdate">1985-03-15</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_002">
+            <field name="name">María Rodríguez González</field>
+            <field name="dni">23456789B</field>
+            <field name="email">maria.rodriguez@logitrans.com</field>
+            <field name="phone">+34 923 456 789</field>
+            <field name="birthdate">1990-07-22</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_003">
+            <field name="name">Carlos Fernández Martín</field>
+            <field name="dni">34567890C</field>
+            <field name="email">carlos.fernandez@logitrans.com</field>
+            <field name="phone">+34 934 567 890</field>
+            <field name="birthdate">1988-11-08</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_004">
+            <field name="name">Ana López Ruiz</field>
+            <field name="dni">45678901D</field>
+            <field name="email">ana.lopez@logitrans.com</field>
+            <field name="phone">+34 945 678 901</field>
+            <field name="birthdate">1992-05-17</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_005">
+            <field name="name">Pedro Sánchez Díaz</field>
+            <field name="dni">56789012E</field>
+            <field name="email">pedro.sanchez@logitrans.com</field>
+            <field name="phone">+34 956 789 012</field>
+            <field name="birthdate">1987-09-30</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_006">
+            <field name="name">Sofía García Iglesias</field>
+            <field name="dni">67890123F</field>
+            <field name="email">sofia.garcia@logitrans.com</field>
+            <field name="phone">+34 967 890 123</field>
+            <field name="birthdate">1995-02-12</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_007">
+            <field name="name">Miguel Torres Blanco</field>
+            <field name="dni">78901234G</field>
+            <field name="email">miguel.torres@logitrans.com</field>
+            <field name="phone">+34 978 901 234</field>
+            <field name="birthdate">1989-06-25</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_008">
+            <field name="name">Lucía Moreno Castro</field>
+            <field name="dni">89012345H</field>
+            <field name="email">lucia.moreno@logitrans.com</field>
+            <field name="phone">+34 989 012 345</field>
+            <field name="birthdate">1993-04-20</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_009">
+            <field name="name">Roberto Vázquez Ramos</field>
+            <field name="dni">90123456I</field>
+            <field name="email">roberto.vazquez@logitrans.com</field>
+            <field name="phone">+34 990 123 456</field>
+            <field name="birthdate">1986-10-14</field>
+        </record>
+
+        <record model="logitrans.persona" id="persona_010">
+            <field name="name">Isabel Navarro López</field>
+            <field name="dni">01234567J</field>
+            <field name="email">isabel.navarro@logitrans.com</field>
+            <field name="phone">+34 901 234 567</field>
+            <field name="birthdate">1991-08-03</field>
+        </record>
+
+        
+        <!-- ===== CONDUCTORES (10 registros) ===== -->
+        
+        <record model="logitrans.conductor" id="conductor_001">
+            <field name="name">Antonio Ruiz García</field>
+            <field name="dni">11111111A</field>
+            <field name="email">antonio.ruiz@logitrans.com</field>
+            <field name="phone">+34 911 111 111</field>
+            <field name="birthdate">1980-01-10</field>
+            <field name="type_licencia">B</field>
+            <field name="points_licencia">15</field>
+            <field name="fecha_vencimiento_licencia">2026-06-15</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_002">
+            <field name="name">Francisco Jiménez López</field>
+            <field name="dni">22222222B</field>
+            <field name="email">francisco.jimenez@logitrans.com</field>
+            <field name="phone">+34 922 222 222</field>
+            <field name="birthdate">1982-05-20</field>
+            <field name="type_licencia">C</field>
+            <field name="points_licencia">12</field>
+            <field name="fecha_vencimiento_licencia">2025-11-30</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_003">
+            <field name="name">Diego Ortega Martínez</field>
+            <field name="dni">33333333C</field>
+            <field name="email">diego.ortega@logitrans.com</field>
+            <field name="phone">+34 933 333 333</field>
+            <field name="birthdate">1984-09-15</field>
+            <field name="type_licencia">D</field>
+            <field name="points_licencia">10</field>
+            <field name="fecha_vencimiento_licencia">2025-03-20</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_004">
+            <field name="name">José María Serrano Ruiz</field>
+            <field name="dni">44444444D</field>
+            <field name="email">josemaria.serrano@logitrans.com</field>
+            <field name="phone">+34 944 444 444</field>
+            <field name="birthdate">1981-12-08</field>
+            <field name="type_licencia">B</field>
+            <field name="points_licencia">8</field>
+            <field name="fecha_vencimiento_licencia">2027-01-10</field>
+            <field name="state">en_reserva</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_005">
+            <field name="name">Raúl Gómez Fernández</field>
+            <field name="dni">55555555E</field>
+            <field name="email">raul.gomez@logitrans.com</field>
+            <field name="phone">+34 955 555 555</field>
+            <field name="birthdate">1983-07-25</field>
+            <field name="type_licencia">C</field>
+            <field name="points_licencia">14</field>
+            <field name="fecha_vencimiento_licencia">2026-08-15</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_006">
+            <field name="name">Javier Alonso González</field>
+            <field name="dni">66666666F</field>
+            <field name="email">javier.alonso@logitrans.com</field>
+            <field name="phone">+34 966 666 666</field>
+            <field name="birthdate">1985-04-12</field>
+            <field name="type_licencia">B</field>
+            <field name="points_licencia">11</field>
+            <field name="fecha_vencimiento_licencia">2024-12-01</field>
+            <field name="state">inactivo</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_007">
+            <field name="name">Eduardo Molina Castillo</field>
+            <field name="dni">77777777G</field>
+            <field name="email">eduardo.molina@logitrans.com</field>
+            <field name="phone">+34 977 777 777</field>
+            <field name="birthdate">1979-11-30</field>
+            <field name="type_licencia">D</field>
+            <field name="points_licencia">13</field>
+            <field name="fecha_vencimiento_licencia">2025-05-22</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_008">
+            <field name="name">Guillermo Díaz Pérez</field>
+            <field name="dni">88888888H</field>
+            <field name="email">guillermo.diaz@logitrans.com</field>
+            <field name="phone">+34 988 888 888</field>
+            <field name="birthdate">1986-02-18</field>
+            <field name="type_licencia">C</field>
+            <field name="points_licencia">15</field>
+            <field name="fecha_vencimiento_licencia">2026-10-05</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_009">
+            <field name="name">Víctor Romero Iglesias</field>
+            <field name="dni">99999999I</field>
+            <field name="email">victor.romero@logitrans.com</field>
+            <field name="phone">+34 999 999 999</field>
+            <field name="birthdate">1988-08-27</field>
+            <field name="type_licencia">B</field>
+            <field name="points_licencia">9</field>
+            <field name="fecha_vencimiento_licencia">2025-09-15</field>
+            <field name="state">en_reserva</field>
+        </record>
+
+        <record model="logitrans.conductor" id="conductor_010">
+            <field name="name">Alfonso Herrera Sánchez</field>
+            <field name="dni">00000000J</field>
+            <field name="email">alfonso.herrera@logitrans.com</field>
+            <field name="phone">+34 900 000 000</field>
+            <field name="birthdate">1982-03-05</field>
+            <field name="type_licencia">D</field>
+            <field name="points_licencia">7</field>
+            <field name="fecha_vencimiento_licencia">2026-02-14</field>
+            <field name="state">activo</field>
+        </record>
+
+        
+        <!-- ===== ADMINISTRATIVOS (10 registros) ===== -->
+        
+        <record model="logitrans.administrativo" id="administrativo_001">
+            <field name="name">Patricia Yáñez Aguirre</field>
+            <field name="dni">11223344A</field>
+            <field name="email">patricia.yanez@logitrans.com</field>
+            <field name="phone">+34 911 223 344</field>
+            <field name="birthdate">1989-01-15</field>
+            <field name="departamento">administracion</field>
+            <field name="extension_telefonica">201</field>
+            <field name="nivel_acceso">4</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_002">
+            <field name="name">Carmen Mejía López</field>
+            <field name="dni">22334455B</field>
+            <field name="email">carmen.mejia@logitrans.com</field>
+            <field name="phone">+34 922 334 455</field>
+            <field name="birthdate">1991-06-20</field>
+            <field name="departamento">finanzas</field>
+            <field name="extension_telefonica">301</field>
+            <field name="nivel_acceso">3</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_003">
+            <field name="name">Fernando Montoya Gómez</field>
+            <field name="dni">33445566C</field>
+            <field name="email">fernando.montoya@logitrans.com</field>
+            <field name="phone">+34 933 445 566</field>
+            <field name="birthdate">1987-11-08</field>
+            <field name="departamento">recursos_humanos</field>
+            <field name="extension_telefonica">401</field>
+            <field name="nivel_acceso">4</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_004">
+            <field name="name">Beatriz Calvo Rodríguez</field>
+            <field name="dni">44556677D</field>
+            <field name="email">beatriz.calvo@logitrans.com</field>
+            <field name="phone">+34 944 556 677</field>
+            <field name="birthdate">1993-03-22</field>
+            <field name="departamento">marketing</field>
+            <field name="extension_telefonica">501</field>
+            <field name="nivel_acceso">2</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_005">
+            <field name="name">Ricardo Salinas Pérez</field>
+            <field name="dni">55667788E</field>
+            <field name="email">ricardo.salinas@logitrans.com</field>
+            <field name="phone">+34 955 667 788</field>
+            <field name="birthdate">1988-09-14</field>
+            <field name="departamento">administracion</field>
+            <field name="extension_telefonica">202</field>
+            <field name="nivel_acceso">2</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_006">
+            <field name="name">Marta Espinosa García</field>
+            <field name="dni">66778899F</field>
+            <field name="email">marta.espinosa@logitrans.com</field>
+            <field name="phone">+34 966 778 899</field>
+            <field name="birthdate">1990-12-30</field>
+            <field name="departamento">finanzas</field>
+            <field name="extension_telefonica">302</field>
+            <field name="nivel_acceso">3</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_007">
+            <field name="name">Óscar Campos Morales</field>
+            <field name="dni">77889900G</field>
+            <field name="email">oscar.campos@logitrans.com</field>
+            <field name="phone">+34 977 889 900</field>
+            <field name="birthdate">1986-05-19</field>
+            <field name="departamento">recursos_humanos</field>
+            <field name="extension_telefonica">402</field>
+            <field name="nivel_acceso">5</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_008">
+            <field name="name">Elena Núñez Domínguez</field>
+            <field name="dni">88990011H</field>
+            <field name="email">elena.nunez@logitrans.com</field>
+            <field name="phone">+34 988 990 011</field>
+            <field name="birthdate">1992-07-11</field>
+            <field name="departamento">marketing</field>
+            <field name="extension_telefonica">502</field>
+            <field name="nivel_acceso">2</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_009">
+            <field name="name">Sebastián Rojas Martínez</field>
+            <field name="dni">99001122I</field>
+            <field name="email">sebastian.rojas@logitrans.com</field>
+            <field name="phone">+34 999 001 122</field>
+            <field name="birthdate">1985-10-27</field>
+            <field name="departamento">administracion</field>
+            <field name="extension_telefonica">203</field>
+            <field name="nivel_acceso">3</field>
+        </record>
+
+        <record model="logitrans.administrativo" id="administrativo_010">
+            <field name="name">Verónica Rincón Silva</field>
+            <field name="dni">00112233J</field>
+            <field name="email">veronica.rincon@logitrans.com</field>
+            <field name="phone">+34 900 112 233</field>
+            <field name="birthdate">1994-02-06</field>
+            <field name="departamento">finanzas</field>
+            <field name="extension_telefonica">303</field>
+            <field name="nivel_acceso">1</field>
+        </record>
+
+    </data>
+</odoo>
