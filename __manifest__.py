@@ -8,7 +8,7 @@
     """,
     "author": "Guillermo Jiménez, Alan Fernández, Gabriela Celano",
     "category": "Operations",
-    "depends": ["base", "base_address_city"],
+    "depends": ["base"],
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
