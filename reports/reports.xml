@@ -50,8 +50,8 @@
     <field name="name">Informe de mantenimiento</field>
     <field name="model">logitrans.mantenimiento</field>
     <field name="report_type">qweb-pdf</field>
-    <field name="report_name">LogiTrans-ODOO.report_mantenimiento_document</field>
-    <field name="report_file">LogiTrans-ODOO.report_mantenimiento_document</field>
+    <field name="report_name">logitrans.report_mantenimiento_document</field>
+    <field name="report_file">logitrans.report_mantenimiento_document</field>
 
     <!-- que aparezca en Imprimir -->
     <field name="binding_model_id" ref="model_logitrans_mantenimiento"/>
@@ -66,8 +66,8 @@
     <field name="name">Informe de vehículo</field>
     <field name="model">logitrans.vehiculo</field>
     <field name="report_type">qweb-pdf</field>
-    <field name="report_name">LogiTrans-ODOO.report_vehiculo_document</field>
-    <field name="report_file">LogiTrans-ODOO.report_vehiculo_document</field>
+    <field name="report_name">logitrans.report_vehiculo_document</field>
+    <field name="report_file">logitrans.report_vehiculo_document</field>
 
     <field name="binding_model_id" ref="model_logitrans_vehiculo"/>
     <field name="binding_type">report</field>
