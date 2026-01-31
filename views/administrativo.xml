@@ -89,9 +89,8 @@
             <field name="name">administrativo.graph</field>
             <field name="model">logitrans.administrativo</field>
             <field name="arch" type="xml">
-                <graph string="Personal por Departamento" type="bar">
+                <graph string="Personal por Departamento" type="bar" sample="1">
                     <field name="departamento" type="row"/>
-                    <field name="nivel_acceso" type="measure"/>
                 </graph>
             </field>
         </record>
